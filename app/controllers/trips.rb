@@ -1,5 +1,5 @@
 post "/trips" do
-	# TODO: precoded date and city needs to work
+	# TODO:  date and city look up and creation needs to work currently hard coded for trip_id in HTMLtemplate should be trip.id 
 	# depart_date_array = params["depart_date"].split("-")
 	# trip = Trip.create(
 		# depart_city_id: params["depart_city"], 

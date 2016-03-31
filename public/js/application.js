@@ -14,8 +14,7 @@ var View = {
 			});
 		});
 
-		$(document).on("click", ".send-user-info", function(event){
-			console.log("workin")
+		$(document).on("click", ".send-user-info", function(event){ // $(document) selector has to be used for ajaxed in html
 			event.preventDefault();
 			var formsHolder = $(".user-info-forms-holder");
 			var passengersInfo = {};
@@ -26,10 +25,26 @@ var View = {
 				url: "/passengers",
 				method: "POST",
 				dataType: "json",
-				data: {passengersInfo: passengersInfo, busID: $(".trip-id").val()}
+				data: {passengersInfo: passengersInfo, busID: $(".trip-id").html()}
 			}).done(function(response){
-				debugger
+				var formArea = $(".form-area");
+				formArea.empty();
+				formArea.html(response);
 			});
+
+			$(document).on("submit", ".stripe-payment-form", function(event){
+				event.preventDefault();
+				stripeData = $(this).serializeArray()
+				$.ajax({
+					url: "/stripe/charge",
+					method: "POST",
+					data: stripeData
+				}).done(function(confirm_html){
+					debugger
+					$(".form-area").empty();
+					$(".stripe-checkout-success").css("display", "block");
+				})
+			})
 		});
 	},
 

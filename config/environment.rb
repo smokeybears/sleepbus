@@ -10,21 +10,24 @@ require 'rubygems'
 
 require 'uri'
 require 'pathname'
-
+require 'sinatra'
 require 'pg'
 require 'active_record'
 require 'logger'
 require 'pry-byebug'
-require 'sinatra'
+require 'stripe'
 require "sinatra/reloader" if development?
 require "sinatra/cross_origin"
 require 'erb'
-
+require 'dotenv'
+Dotenv.load
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s
-
+set :publishable_key, ENV['PUBLISHABLE_KEY']
+set :secret_key, ENV['SECRET_KEY']
+Stripe.api_key = settings.secret_key
 configure do
   # By default, Sinatra assumes that the root is the file that calls the configure block.
   # Since this is not the case for us, we set it manually.
