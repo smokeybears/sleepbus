@@ -12,8 +12,9 @@ gem 'activesupport', '~>4.1'
 gem 'activerecord', '~>4.1'
 gem "sinatra-cross_origin", "~> 0.3.1"
 gem 'rake'
-
 gem 'shotgun'
+gem "stripe"
+gem "dotenv"
 
 group :test do
   gem 'shoulda-matchers'
