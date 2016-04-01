@@ -14,6 +14,17 @@ var View = {
 			});
 		});
 
+		$('.number_of_adults').change(function(event){
+			$.ajax({
+				url: "/trips/availability",
+				method: "POST",
+				data: $(this).val()
+			}).done(function(response){
+				debugger
+				// View.updateAvailableDates(response);
+			})
+		})
+
 		$(document).on("click", ".send-user-info", function(event){ // $(document) selector has to be used for ajaxed in html
 			event.preventDefault();
 			var formsHolder = $(".user-info-forms-holder");
@@ -48,16 +59,25 @@ var View = {
 		});
 	},
 
-	updateDates: function(){
-		var today = new Date();
-		var dd = today.getDate();
-		var mm = today.getMonth()+1;
-		var yyyy = today.getFullYear();
-		$(".start_date").atrr("value", yyyy + "-" + mm + "-" + dd);
-		$(".return_date").atrr("value", yyyy + "-" + mm + "-" + (dd + 2));
+
+	updateAvailableDates: function(notAllowedDates){
+		var array = ["2013-03-14","2013-03-15","2013-03-16"]
+		$('input').datepicker({
+		    beforeShowDay: function(date){
+		        var string = jQuery.datepicker.formatDate('yyyy-mm-dd', date);
+		        return [ array.indexOf(string) == -1 ]
+		    }
+		});
+	},
+
+	setUpLanding: function(){
+		// debugger
+		// $('#depart-date').datepicker();
+		// $('#arrive-date').datepicker();
 	}
 }
 
 $(document).ready(function() {
+	View.setUpLanding();
 	View.startListeners();
 });
