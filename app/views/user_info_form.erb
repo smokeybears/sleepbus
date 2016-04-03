@@ -1,21 +1,48 @@
 <div class="user-info-forms-holder">
+<div class="center">
+	<p class="help-block">Gust Information</p>
+</div>
 	<% number_of_passengers.to_i.times do |user_number| %>
 		<form action="*" class="user-details-form">
-			<br>
-			<label for="first_name">First Name:</label>
-			<input type="text" name= <%= "#{user_number}" + "_first_name"%> value="Shayanne">
-			<br>
+			<div class="form-group">
+				<hr>
+				<p class="help-block">Adult <%= user_number + 1 %></p>
+				<!-- <label for="first_name">First Name:</label> -->
+				<input 
+					type="text" 
+					name= <%= "#{user_number}" + "_first_name"%> 
+					place-holder="First Name" 
+					value="Shayanne"
+					class="form-control"
+				>
+			</div>
 
-			<label for="last_name">Last Name:</label>
-			<input type="text" name= <%= "#{user_number}" + "_last_name"%> value="Wright">
-			<br>
+			<div class="form-group">	
+				<!-- <label for="last_name">Last Name:</label> -->
+				<input 
+					type="text" 
+					name= <%= "#{user_number}" + "_last_name"%> 
+					class="form-control"
+					place-holder="Last Name" 
+					value="Wright"
+				>
+			</div>
 
-			<label for="email">Email:</label>
-			<input type="text" name= <%= "#{user_number}" + "_email"%> value="shayannewright@gmail.com">
-			<br>
+			<div class="form-group">
+				<!-- <label for="email">Email:</label> -->
+				<input 
+					type="text" 
+					name= <%= "#{user_number}" + "_email"%> 
+					place-holder="Email"
+					class="form-control"
+					value="shayannewright@gmail.com"
+				>
+			</div>
 		</form>
 		<br>
 	<% end %>
 </div>
-<button class="send-user-info">Book Tickets</button>
-<span style="visibility: hidden; position: absolute;" class="trip-id"><%= trip_id %></span>
+<div class="form-submit-holder">
+	<button class="send-user-info btn btn-success btn-lg btn-block form-submit">Next</button>
+</div>
+<span style="visibility: hidden; position: absolute;" class="trip-id"><%= "#{trip_ids[0]}, #{trip_ids[1]}" %></span>

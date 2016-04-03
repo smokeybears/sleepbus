@@ -1,19 +1,28 @@
 post "/passengers" do 
-	num_passengers = 0
+	trip_ids = params["busID"].split(",")
+	passengers = []
 	params["passengersInfo"].each_key do |key|
-		num_passengers += 1
 		passenger = Passenger.create({
 			first_name: params["passengersInfo"][key]["0"]["value"],
 			last_name: params["passengersInfo"][key]["1"]["value"],
 			email: params["passengersInfo"][key]["2"]["value"]
 			})
+		passengers << passenger
 		Ticket.create({
 			passenger_id: passenger.id,
-			trip_id: params["trip_id"].to_i
+			trip_id: trip_ids[0]
+			})
+		Ticket.create({
+			passenger_id: passenger.id,
+			trip_id: trip_ids[1]
 			})
 	end
 	content_type :json
-	checkoutTemplate = erb :stripe_payment, layout: false, locals: {cost: (65.00 * num_passengers), num_passengers: num_passengers}
+	checkoutTemplate = erb :checkout_review, 
+	layout: false, 
+	locals: {trips: [Trip.find(trip_ids[0].to_i), Trip.find(trip_ids[1].to_i)],
+	passengers: passengers,
+}
 	return checkoutTemplate.to_json
 end
 

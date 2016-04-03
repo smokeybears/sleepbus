@@ -1,13 +1,36 @@
 var View = {
 	startListeners: function(){
+		// switch direction of travel
+		$(document).on("click", ".div-line-text", function(){
+			if ($(".direction-selection").css("flex-direction") == "row"){
+				$(".direction-selection").css("flex-direction", "row-reverse");
+			} else {
+				$(".direction-selection").css("flex-direction", "row");
+			}
+			var orginal_depart_name = $(".depart-city").html();
+			var orginal_depart_id = $(".depart-city").data("city-id")
+			$(".depart-city").html($(".arrive-city").html());
+			$(".arrive-city").html(orginal_depart_name)
+			$(".depart-city").data("city-id", $(".arrive-city").data("city-id"))
+			$(".arrive-city").data("city-id", orginal_depart_id)
+			
+		});
 		$(".trip-details-form").submit(function(event){
+			var tripData = {}
+			tripData["depart-date"] = $("#depart-date").val();
+			tripData["arrive-date"] = $("#arrive-date").val();
+			tripData["number_of_adults"] = $(".number_of_adults").val();
+			tripData["departCityID"] = $(".depart-city").data("city-id");
+			tripData["arriveCityID"] = $(".arrive-city").data("city-id");
+			debugger
 			event.preventDefault();
 			$.ajax({
 				url: "/trips",
 				method: "POST",
 				dataType: "json",
-				data: $(this).serialize()
+				data: tripData
 			}).done(function(response){
+				$(".direction-selection-holder").remove();
 				formArea = $(".form-area");
 				formArea.empty();
 				formArea.html(response);
@@ -15,6 +38,7 @@ var View = {
 		});
 
 		$('.number_of_adults').change(function(event){
+			View.updatePriceInSubmitText($(this).val())
 			$.ajax({
 				url: "/trips/availability",
 				method: "POST",
@@ -40,7 +64,7 @@ var View = {
 			}).done(function(response){
 				var formArea = $(".form-area");
 				formArea.empty();
-				formArea.html(response);
+				$(".confirmation-view").html(response);
 			});
 
 			$(document).on("submit", ".stripe-payment-form", function(event){
@@ -68,6 +92,11 @@ var View = {
 		        return [ array.indexOf(string) == -1 ]
 		    }
 		});
+	},
+
+	updatePriceInSubmitText:  function(numPassengers){
+		var price = parseInt(numPassengers) * 65
+		$(".trip-details").attr("value", "Book now for $" + price)
 	},
 
 	setUpLanding: function(){

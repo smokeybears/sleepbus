@@ -1,0 +1,21 @@
+<div class="checkout-review">w
+	<% trips.each do |trip| %>
+		<div class="depart-city-review">
+				<h4>
+					<%= City.find(trip.depart_city_id).name %> to <%= City.find(trip.end_city_id).name %>
+				</h4>
+				<h5>
+					Departure: <%= trip.depart_date %> @11pm
+				</h5>
+				<h5>
+					Arrival: <%= trip.arrive_date %> by 5am
+				</h5>
+		</div>
+	<% end %>
+	<% passengers.each_with_index do |passenger, index| %>
+		<h5>Guest <%=  (index + 1) %></h5>
+		<h5><%= passenger.first_name + " " + passenger.last_name %></h5>
+			<h5><%= passenger.email %></h5>
+		<hr>
+	<% end %>
+</div>
