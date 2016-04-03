@@ -1,23 +1,43 @@
-<div class="form-area">
-	<form action="*" class="trip-details-form">
-		<label for="number_of_adults">How many adults are going?</label>
-		<select name="number_of_adults" class="number_of_adults">
-	  	<option value="1">1 Adult</option>
-	  	<option value="2">2 Adults</option>
-	  	<option value="3">3 Adults</option>
-	  	<option value="4">4 Adults</option>
-		</select>
-		<br>
-
-		<label for="depart_date">Depart from <span class="depart_city">San Francisco, Ca</span></label>
-		<input type="date" name="depart-date" id="depart-date">
-		<br>
-
-		<label for="arrive_date">Return from <span class="arrive_city">Los Angleses, Ca</span></label>
-		<input type="date" name="arrive-date"id="arrive-date">
-		<br>
-
-		<input type="submit" class="trip-details">
-	</form>
-	<br>
+<div class="direction-selection-holder">
+	<div class="direction-selection">
+		<div>SF</div>
+		<div><i class="icon-loop"></i></div>
+		<div>LA</div>
+	</div>
+	<div class="div-line">
+	      <span class="div-line-text">
+	        Switch
+	      </span>
+	</div>
 </div>
+<div class="form-area">
+		<form action="*" class="trip-details-form">
+			<div class="form-group">
+				<!-- <label for="number_of_adults">How many adults are going?</label> -->
+				<p class="help-block">How many adults are going?</p>
+				<select name="number_of_adults" class="number_of_adults form-control">
+			  	<option value="1">1 Adult</option>
+			  	<option value="2">2 Adults</option>
+			  	<option value="3">3 Adults</option>
+			  	<option value="4">4 Adults</option>
+				</select>
+			</div>
+			<div class="form-group">
+					<!-- <label for="depart_date">Depart from <span class="depart_city">San Francisco, Ca</span></label> -->
+					<p class="help-block">Depart from <span class="depart-city" data-city-id="1">San Francisco, Ca</span></p>
+					<input type="date" name="depart-date" id="depart-date" value="2016-04-01" class="form-control">
+			</div>
+			<div class="form-group">
+				<p class="help-block">Return from <span class="arrive-city" data-city-id="2">Los Angleses, Ca</span></p>
+					<!-- <label for="arrive_date">Return from <span class="arrive_city">Los Angleses, Ca</span></label> -->
+					<input type="date" name="arrive-date" value="2016-04-02"id="arrive-date" class="form-control">
+			</div>
+		<div class="center">
+				<p class="help-block">All busses depart at 11:00pm and arrive <br> at their destination by 5:00 the next day</p>
+				<div class="form-submit-holder">
+					<input type="submit" class="trip-details btn btn-success btn-lg btn-block form-submit" value="Book now for $65">
+				</div>
+		</div>
+		</form>
+</div>
+<div class="confirmation-view"></div>
