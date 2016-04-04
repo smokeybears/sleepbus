@@ -28,9 +28,9 @@ end
 post "/trips/availability" do 
 	#TODO add dynamic city look up
 	depart_trips = Trip.where(depart_city_id: 1, depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
-	arrive_trips = Trip.where(arrive_city_id: 2, depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
+	arrive_trips = Trip.where(end_city_id: 2, depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
 	num_passengers = params.first[0]
-
+	
 	content_type :json
 	return [depart_trips, arrive_trips].to_json
 end

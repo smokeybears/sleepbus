@@ -18,4 +18,12 @@
 			<h5><%= passenger.email %></h5>
 		<hr>
 	<% end %>
+<form action="/stripe/charge" method="post" class="stripe-payment-form">
+ <input type="hidden" value="<%= passengers.length * 65 %>" name="cost">
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	          data-key="<%= settings.publishable_key %>"
+	          data-description="Bus tickets for <%= passengers.length %> Passenger(s)"
+	          data-amount= "<%= passengers.length * 6500 %>"
+	          data-locale="auto"></script>
+	</form>
 </div>
