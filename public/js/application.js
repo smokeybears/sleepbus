@@ -13,7 +13,7 @@ var View = {
 			$(".arrive-city").html(orginal_depart_name)
 			$(".depart-city").data("city-id", $(".arrive-city").data("city-id"))
 			$(".arrive-city").data("city-id", orginal_depart_id)
-			
+
 		});
 		$(".trip-details-form").submit(function(event){
 			var tripData = {}
@@ -41,11 +41,11 @@ var View = {
 			View.updatePriceInSubmitText($(this).val())
 			$.ajax({
 				url: "/trips/availability",
-				method: "POST",
-				data: $(this).val()
+				method: "GET", // pretty sure this is a get request, you're not posting anyting
+				data: $(this).val(),
 			}).done(function(response){
-				debugger
-				// View.updateAvailableDates(response);
+				// response = [[departTrips], [returnTrips]]
+				View.updateAvailableDates(response[0], response[1]);
 			})
 		})
 
@@ -84,12 +84,16 @@ var View = {
 	},
 
 
-	updateAvailableDates: function(notAllowedDates){
-		var array = ["2013-03-14","2013-03-15","2013-03-16"]
+	updateAvailableDates: function(departTrips, returnTrips){
+		// var array = ["2013-03-14","2013-03-15","2013-03-16"]
+		var departDates = departTrips.map(function (trip) {return trip.depart_date})
+		var returnDates = returnTrips.map(function (trip) {return trip.depart_date})
+		// map to get the available dates for each direction of travel.
 		$('input').datepicker({
 		    beforeShowDay: function(date){
 		        var string = jQuery.datepicker.formatDate('yyyy-mm-dd', date);
-		        return [ array.indexOf(string) == -1 ]
+		        // I don't really see how this thing is working but I think you get the idea.
+		        return departDates.indexOf(string) == -1
 		    }
 		});
 	},
