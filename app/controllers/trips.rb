@@ -11,26 +11,26 @@ post "/trips" do
 			depart_city_id: params["arriveCityID"],
 			end_city_id: params["departCityID"]
 		)
-		HTMLtemplate = erb :user_info_form, 
-			:layout => false, 
+		HTMLtemplate = erb :user_info_form,
+			:layout => false,
 			:locals => {
-				trip_ids: [trip.id, return_trip.id],	
+				trip_ids: [trip.id, return_trip.id],
 				number_of_passengers: params["number_of_adults"]
 			}
 		return HTMLtemplate.to_json
 	else
-		return "error no trip".to_json
+		return "Error: Doesn't look like we have any more seats available on that route".to_json
 	end
-	
+
 end
 
 
-post "/trips/availability" do 
+get "/trips/availability" do
 	#TODO add dynamic city look up
+	#TODO add logic to check the number of seats sold already, and only pass back buses with available seats > 0.
 	depart_trips = Trip.where(depart_city_id: 1, depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
-	arrive_trips = Trip.where(end_city_id: 2, depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
-	num_passengers = params.first[0]
-	
+	return_trips = Trip.where(end_city_id: 2, depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
+	# num_passengers = params.first[0] #this isn't being used
 	content_type :json
-	return [depart_trips, arrive_trips].to_json
+	return [depart_trips, return_trips].to_json
 end
