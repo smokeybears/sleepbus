@@ -10,7 +10,16 @@ post "/stripe/charge" do
     :currency    => 'usd',
     :customer    => customer.id
   )
-  
+  session[:passengers].each do |passenger|
+    Ticket.create({
+      passenger_id: passenger.id,
+      trip_id: session[:trip_ids][0]
+    })
+    Ticket.create({
+      passenger_id: passenger.id,
+      trip_id: session[:trip_ids][1]
+    })
+  end
   # should add test here to see if charge went through
 
   # once javascript start preventDefault() uncomment next three lines
