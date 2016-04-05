@@ -91,12 +91,20 @@ body {
 .form-area {
 	padding: 5%;
 }
+
+.error-holder {
+	  background: #ffc8bf;
+    border-color: #e93801;
+    color: #e93801;
+    width: 70%;
+    margin: auto
+}
 /**************************************
 Landing.erb 
 *************************************/
 .direction-selection {
 	width: 70%;
-	margin: auto;
+	margin: 1% auto auto auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -129,5 +137,14 @@ Landing.erb
 Confirmation Page
 *************************************/
 .confirmation-view {
+	width: 80%;
+	margin: auto;
+}
+
+.confirmation-view h4 {
+	color: white;
+}
+
+.confirmation-view h5 {
 	color: white;
 }

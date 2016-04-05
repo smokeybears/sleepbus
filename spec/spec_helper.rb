@@ -7,6 +7,9 @@ require 'rubygems'
 # command line when we run rake spec.  That's tedious, so do it here.
 ENV['RACK_ENV'] ||= 'test'
 
+FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
+FactoryGirl.find_definitions
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'shoulda-matchers'
 require 'rack/test'

@@ -14,10 +14,10 @@ post "/passengers" do
 	content_type :json
 	checkoutTemplate = erb :checkout_review, 
 	layout: false, 
-	locals: {trips: [Trip.find(trip_ids[0].to_i), Trip.find(trip_ids[1].to_i)],
-	passengers: passengers,
-
-}
+	locals: {
+		trips: [Trip.find(trip_ids[0].to_i), Trip.find(trip_ids[1].to_i)],
+		passengers: passengers,
+	}
 	session[:passengers] = passengers
 	session[:trip_ids] = trip_ids
 	return checkoutTemplate.to_json

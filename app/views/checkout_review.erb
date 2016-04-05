@@ -1,4 +1,4 @@
-<div class="checkout-review">w
+<div class="checkout-review">
 	<% trips.each do |trip| %>
 		<div class="depart-city-review">
 				<h4>
@@ -12,6 +12,7 @@
 				</h5>
 		</div>
 	<% end %>
+	<hr>
 	<% passengers.each_with_index do |passenger, index| %>
 		<h5>Guest <%=  (index + 1) %></h5>
 		<h5><%= passenger.first_name + " " + passenger.last_name %></h5>
@@ -22,7 +23,7 @@
  <input type="hidden" value="<%= passengers.length * 6500 %>" name="cost">
 	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 	          data-key="<%= settings.publishable_key %>"
-	          data-description="Bus tickets for <%= passengers.length %> Passenger(s)"
+	          data-description="<%= passengers.length %> Sleepbus Ticket(s)"
 	          data-amount= "<%= passengers.length * 6500 %>"
 	          data-locale="auto"></script>
 	</form>

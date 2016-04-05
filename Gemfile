@@ -14,6 +14,7 @@ gem 'rake'
 gem 'shotgun'
 gem "stripe"
 gem "dotenv"
+gem "bcrypt"
 
 group :test do
   gem 'shoulda-matchers'
@@ -23,6 +24,7 @@ group :test do
 end
 
 group :test, :development do
+	gem 'hirb'
   gem 'factory_girl'
   gem 'faker'
 end

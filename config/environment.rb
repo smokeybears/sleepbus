@@ -7,7 +7,7 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
-
+require 'faker'
 require 'uri'
 require 'pathname'
 require 'sinatra'
@@ -19,6 +19,7 @@ require 'stripe'
 require "sinatra/reloader" if development?
 require "sinatra/cross_origin"
 require 'erb'
+require 'hirb'
 require 'dotenv'
 Dotenv.load
 # Some helper constants for path-centric logic
