@@ -48,20 +48,25 @@ post "/trips/oneway" do
 end
 
 get "/trips/availability" do
-	num_passengers = params["number_of_adults"].to_i
-	depart_trips = Trip.where(depart_city_id: params["depart_city_id"], depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
-	if depart_trips.length > 0
-		depart_trips = depart_trips.reject do |trip_ob|
-			num_passengers > trip_ob.seats_left
+	begin 
+		num_passengers = params["number_of_adults"].to_i
+		depart_trips = Trip.where(depart_city_id: params["depart_city_id"], depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
+		if depart_trips.length > 0
+			depart_trips = depart_trips.reject do |trip_ob|
+				num_passengers > trip_ob.seats_left
+			end
 		end
+		return_trips = Trip.where(depart_city_id: params["return_city_id"], depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
+		
+		if return_trips.length > 0
+			return_trips = return_trips.reject do |trip_ob|
+				num_passengers > trip_ob.seats_left 
+			end
+		end
+	rescue ActiveRecord::ConnectionTimeoutError => e 
+		puts e
 	end
-	return_trips = Trip.where(depart_city_id: params["return_city_id"], depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
 	
-	if return_trips.length > 0
-		return_trips = return_trips.reject do |trip_ob|
-			num_passengers > trip_ob.seats_left 
-		end
-	end
 	content_type :json
 	return [depart_trips, return_trips].to_json
 end
