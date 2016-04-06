@@ -55,8 +55,9 @@ get "/trips/availability" do
 			num_passengers > trip_ob.seats_left
 		end
 	end
+	return_trips = Trip.where(depart_city_id: params["return_city_id"], depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
+	
 	if return_trips.length > 0
-		return_trips = Trip.where(depart_city_id: params["return_city_id"], depart_date: Date.today..Date.today.to_time.advance(:months => 2).to_date)
 		return_trips = return_trips.reject do |trip_ob|
 			num_passengers > trip_ob.seats_left 
 		end
