@@ -1,7 +1,25 @@
 var Model = {
-	sendTripDetails: function(tripData){
+	sendRoundTripDetails: function(tripData){
 		$.ajax({
 			url: "/trips/round",
+			method: "POST",
+			dataType: "json",
+			data: tripData
+		}).done(function(response){
+			View.removeCityToggle()
+			View.updateFormArea(response)
+			// if (response.status == 200){
+			// 	$(".direction-selection-holder").remove();
+			// 	View.updateFormArea(response)
+			// } else {
+			// 	View.displayFormError(response)
+			// }
+		});
+	},
+	// Note these to ajax calls could just go to one route /trips and have the logic for trip type done on the backend but I like the modularity of seperate routes
+	sendOneWayTripDetails: function(tripData){
+		$.ajax({
+			url: "/trips/oneway",
 			method: "POST",
 			dataType: "json",
 			data: tripData
@@ -80,7 +98,7 @@ var View = {
 		$('#depart-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
-		        return [departDates.indexOf(formatedDate) == -1]
+		        return [departDates.indexOf(formatedDate) != -1]
 		    },
 		    minDate: 0
 		});
@@ -88,7 +106,7 @@ var View = {
 		$('#return-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
-		        return [returnDates.indexOf(formatedDate) == -1]
+		        return [returnDates.indexOf(formatedDate) != -1]
 		    },
 		    minDate: 0
 
@@ -125,7 +143,7 @@ var View = {
 		$(".return-city").attr("data-city-id", orginal_depart_id)
 	},
 
-	getTripDetailsFormInfo: function(callback){
+	getTripDetailsFormInfo: function(callback, tripType){
 		var tripData = {}
 		tripData["depart-date"] = $("#depart-date").val();
 		tripData["return-date"] = $("#return-date").val();
@@ -170,8 +188,15 @@ startListeners = function(){
 	});
 
 	$(".trip-details-form").submit(function(event){
-		View.getTripDetailsFormInfo(Model.sendTripDetails) // gets the data from the form then sends it as a param to the callback
+		var tripType = $(".trip-details").attr("data-trip-type");
+		if (tripType == "round") {
+			View.getTripDetailsFormInfo(Model.sendRoundTripDetails, tripType) // gets the data from the form then sends it as a param to the callback
+		} else {
+			View.getTripDetailsFormInfo(Model.sendOneWayTripDetails, tripType) // 
+		}
 	});
+
+
 
 
 	$('.number_of_adults').change(function(event){
@@ -200,6 +225,46 @@ startListeners = function(){
 		Model.sendStripPaymentDetails($(this).serializeArray()) // sends stripe form data to /stripe/charge
 	});
 	
+// this stuff needs to be cleaned up a lot
+	$(document).on("click", "#one-way", function(event){
+		event.preventDefault();
+		$(this).toggleClass("non-selected");
+		$("#roundtrip").toggleClass("non-selected");
+		$(this).toggleClass("selected")
+		$("#roundtrip").toggleClass("selected");
+		$(".return-date-select").css("display", "none");
+		$(".trip-details").attr("data-trip-type", "one-way");
+		$(".direction-selection-icon").removeClass("icon-loop");
+		$(".direction-selection-icon").addClass("icon-arrow-right");
+	});
+
+	$(document).on("click", "#roundtrip", function(event){
+		event.preventDefault();
+		$(this).toggleClass("non-selected");
+		$(this).toggleClass("selected");
+		$("#one-way").toggleClass("non-selected");
+		$("#one-way").toggleClass("selected");
+		$(".return-date-select").css("display", "block");
+		$(".trip-details").attr("data-trip-type", "one-way")
+		$(".direction-selection-icon").removeClass("icon-arrow-right");
+		$(".direction-selection-icon").addClass("icon-loop");
+	});
+
+	$(document).on("click", ".mobile-book-trip", function(event){
+		event.preventDefault();
+		$(".modal").css("display", "flex");
+	});
+
+
+	$(document).on("click", ".book-trip", function(event){
+		event.preventDefault();
+		$(".modal").css("display", "flex");
+	});
+
+	$(document).on("click", ".modal-close", function(event){
+		event.preventDefault();
+		$(".modal").css("display", "none");
+	})
 }
 
 $(document).ready(function() {

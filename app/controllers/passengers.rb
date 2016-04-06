@@ -11,11 +11,15 @@ post "/passengers" do
 			passengers << passenger
 		end
 	end
+	trips = [Trip.find(trip_ids[0].to_i)]
+	if trip_ids.length > 1 
+		trips.push(Trip.find(trip_ids[1].to_i))
+	end
 	content_type :json
 	checkoutTemplate = erb :checkout_review, 
 	layout: false, 
 	locals: {
-		trips: [Trip.find(trip_ids[0].to_i), Trip.find(trip_ids[1].to_i)],
+		trips: trips,
 		passengers: passengers,
 	}
 	session[:passengers] = passengers
