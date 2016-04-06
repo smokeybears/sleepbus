@@ -1,49 +1,57 @@
 post "/trips/round" do
-	content_type :json
+	begin 
+		content_type :json
 
- 	trip = Trip.find_by(
-		depart_date: Date.strptime(params["depart-date"], "%m/%d/%Y"),
-		depart_city_id: params["departCityID"],
-		end_city_id: params["arriveCityID"]
-	)
-	if trip && trip.seats_left >= params["number_of_adults"].to_i # serverside check for seat avaiblity
-		return_trip = Trip.find_by(
-			depart_date:  Date.strptime(params["return-date"], "%m/%d/%Y"),
-			depart_city_id: params["arriveCityID"],
-			end_city_id: params["departCityID"]
+	 	trip = Trip.find_by(
+			depart_date: Date.strptime(params["depart-date"], "%m/%d/%Y"),
+			depart_city_id: params["departCityID"],
+			end_city_id: params["arriveCityID"]
 		)
-		HTMLtemplate = erb :user_info_form,
-			:layout => false,
-			:locals => {
-				trip_ids: [trip.id, return_trip.id],
-				number_of_passengers: params["number_of_adults"]
-			}
-			status 200
-		return HTMLtemplate.to_json
-	else
-		status 406
-		return "Sorry Doesn't look like we have any more seats available on that route".to_json
+		if trip && trip.seats_left >= params["number_of_adults"].to_i # serverside check for seat avaiblity
+			return_trip = Trip.find_by(
+				depart_date:  Date.strptime(params["return-date"], "%m/%d/%Y"),
+				depart_city_id: params["arriveCityID"],
+				end_city_id: params["departCityID"]
+			)
+			HTMLtemplate = erb :user_info_form,
+				:layout => false,
+				:locals => {
+					trip_ids: [trip.id, return_trip.id],
+					number_of_passengers: params["number_of_adults"]
+				}
+				status 200
+			return HTMLtemplate.to_json
+		else
+			status 406
+			return "Sorry Doesn't look like we have any more seats available on that route".to_json
+		end
+	rescue ActiveRecord::ConnectionTimeoutError => e 
+		puts e
 	end
 
 end
 
 post "/trips/oneway" do
-	trip = Trip.find_by(
-			depart_date: Date.strptime(params["depart-date"], "%m/%d/%Y"),
-			depart_city_id: params["departCityID"],
-			end_city_id: params["arriveCityID"]
-		)
-	if trip && trip.seats_left >= params["number_of_adults"].to_i
-			HTMLtemplate = erb :user_info_form,
-			:layout => false,
-			:locals => {
-				trip_ids: [trip.id],
-				number_of_passengers: params["number_of_adults"]
-			}
-		return HTMLtemplate.to_json
-	else
-		# status 406
-		# return "Sorry Doesn't look like we have any more seats available on that route".to_json
+	begin 
+		trip = Trip.find_by(
+				depart_date: Date.strptime(params["depart-date"], "%m/%d/%Y"),
+				depart_city_id: params["departCityID"],
+				end_city_id: params["arriveCityID"]
+			)
+		if trip && trip.seats_left >= params["number_of_adults"].to_i
+				HTMLtemplate = erb :user_info_form,
+				:layout => false,
+				:locals => {
+					trip_ids: [trip.id],
+					number_of_passengers: params["number_of_adults"]
+				}
+			return HTMLtemplate.to_json
+		else
+			# status 406
+			# return "Sorry Doesn't look like we have any more seats available on that route".to_json
+		end
+	rescue ActiveRecord::ConnectionTimeoutError => e 
+		puts e
 	end
 end
 
@@ -66,7 +74,7 @@ get "/trips/availability" do
 	rescue ActiveRecord::ConnectionTimeoutError => e 
 		puts e
 	end
-	
+
 	content_type :json
 	return [depart_trips, return_trips].to_json
 end
