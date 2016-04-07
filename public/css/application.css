@@ -53,6 +53,7 @@ html, body {
 
 body{
 	margin: 0px;
+	width: 100%;
 	padding: 0px;
 }
 
@@ -214,6 +215,7 @@ Landing Header
 	left: 0;
 	right: 0;
 	bottom: auto;
+	padding: 0;
 	z-index: 500;
 }
 
