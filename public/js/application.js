@@ -268,13 +268,11 @@ startListeners = function(){
 		$(".direction-selection-icon").addClass("icon-loop");
 	});
 
-	$(document).on("click", ".mobile-book-trip", function(event){
-		event.preventDefault();
-		$(".modal").css("display", "flex");
-	});
-
-
-	$(document).on("click", ".book-trip", function(event){
+	// $(document).on("click", ".mobile-book-trip", function(event){
+	// 	event.preventDefault();
+	// 	$(".modal").css("display", "flex");
+	// });
+	$(document).on("click", ".book-trip, .mobile-book-trip, .book-trip-no-disappear", function(event){
 		event.preventDefault();
 		$(".modal").css("display", "flex");
 	});
