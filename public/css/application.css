@@ -144,7 +144,7 @@ Landing Header
 	right: 0;
 	bottom: auto;
 	padding: 0;
-	z-index: 1000;
+	z-index: 500;
 }
 
 .switch-follow-nav-waypoint{
@@ -165,6 +165,10 @@ Landing Header
 
 #appear-follow-nav > * {
 	padding: 1%;
+}
+
+#appear-follow-nav div img {
+
 }
 
 .book-trip-no-disappear {
@@ -423,6 +427,10 @@ Landing Main
 
 	.flex-reverse-wrap {
 		flex-wrap: wrap-reverse;
+	}
+
+	.nav-logo {
+    max-width: 45%;
 	}
 
 }
