@@ -42,3 +42,7 @@ ActiveRecord::Base.establish_connection(
   :pool => 30
 )
 
+after do
+  p 'closing connection'
+  ActiveRecord::Base.connection.close
+end
