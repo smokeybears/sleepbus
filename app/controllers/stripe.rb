@@ -6,43 +6,48 @@ post "/stripe/charge" do
         :card  => params[:stripeToken]
       )
     rescue Stripe::InvalidRequestError => e
-      return e
+      # return e
     rescue Stripe::handle_api_error => e
-      return e
+      # return e
     rescue Stripe::general_api_error => e
-      return e
+      # return e
     rescue Stripe::StripeError => e
-      return e
+      # return e
   end
 
   begin
     charge = Stripe::Charge.create(
-      :amount      => (params["cost"].to_i * 100),
+      :amount      => (params["cost"].to_i),
       :description => 'SleepBus ticket',
       :currency    => 'usd',
       :customer    => customer.id
     )
     rescue Stripe::CardError => e
-      return e
+      # return e
     rescue Stripe::AuthenticationError => e
-      return e
+      # return e
     rescue Stripe::StripeError => e
-      return e
+      # return e
     rescue Stripe::InvalidRequestError => e
-      return e
+      # return e
   end
 
-  #if !(env['sinatra.error'].message) # if is somewhat uneccessary because the route will have already returned if an error occured due to the rescues, but this works as a last catch all
-  session[:passengers].each do |passenger|
-    Ticket.create({
-      passenger_id: passenger.id,
-      trip_id: session[:trip_ids][0]
-    })
-    Ticket.create({
-      passenger_id: passenger.id,
-      trip_id: session[:trip_ids][1]
-    })
-   # end
+  # catch errrors
+  # charge object will not have paid attribute if payment did not succeed
+  # source: http://stackoverflow.com/questions/26985956/checking-for-a-successful-charge-using-stripe-for-rails
+  if charge["paid"] == true
+    session[:passengers].each do |passenger|
+      Ticket.create({
+        passenger_id: passenger.id,
+        trip_id: session[:trip_ids][0]
+      })
+      if session[:trip_ids][1]
+        Ticket.create({
+          passenger_id: passenger.id,
+          trip_id: session[:trip_ids][1]
+        })
+      end
+    end
   end
   # should add test here to see if charge went through
 

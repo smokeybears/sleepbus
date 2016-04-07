@@ -45,4 +45,12 @@
 <div class="form-submit-holder">
 	<button class="send-user-info btn btn-success btn-lg btn-block form-submit">Next</button>
 </div>
-<span style="visibility: hidden; position: absolute;" class="trip-id"><%= "#{trip_ids[0]}, #{trip_ids[1]}" %></span>
+
+<span style="visibility: hidden; position: absolute;" 
+class="trip-id">
+<% if trip_ids[1] %>
+	<%= "#{trip_ids[0]}, #{trip_ids[1]}" %>
+<% else %>
+	<%= "#{trip_ids[0]}" %>
+<% end %>
+</span>
