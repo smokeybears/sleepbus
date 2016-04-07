@@ -6,15 +6,15 @@ post "/stripe/charge" do
         :card  => params[:stripeToken]
       )
     rescue Stripe::InvalidRequestError => e
-      # do something with the error?
+      return e
     rescue Stripe::handle_api_error => e
-      # do something with the error?
+      return e
     rescue Stripe::general_api_error => e
-      # do something with the error?
+      return e
     rescue Stripe::StripeError => e
-      # do something with the error?
+      return e
   end
-  
+
   begin
     charge = Stripe::Charge.create(
       :amount      => (params["cost"].to_i),
@@ -23,13 +23,13 @@ post "/stripe/charge" do
       :customer    => customer.id
     )
     rescue Stripe::CardError => e
-      # do somthing ?
+      return e
     rescue Stripe::AuthenticationError => e
-      # do somthing ?
+      return e
     rescue Stripe::StripeError => e
-      # do somthing ?
+      return e
     rescue Stripe::InvalidRequestError => e
-      # do somthing ?
+      return e
   end
 
   #if !(env['sinatra.error'].message) # if is somewhat uneccessary because the route will have already returned if an error occured due to the rescues, but this works as a last catch all
