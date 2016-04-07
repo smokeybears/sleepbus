@@ -42,4 +42,3 @@ ActiveRecord::Base.establish_connection(
   :pool => 30
 )
 
-ActiveRecord::Base.configurations['pool'] = 30
