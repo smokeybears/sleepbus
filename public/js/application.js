@@ -119,6 +119,20 @@ var View = {
 		$(".trip-details").attr("value", "Book now for $" + price)
 	},
 
+	toggleFollowNav: function(){
+		appearfollowNav = $("#appear-follow-nav");
+		followNavContianer = $(".follow-nav");
+		if (appearfollowNav.css("display") == "flex"){
+			appearfollowNav.slideUp();
+			followNavContianer.css("display", "block");
+		} else {
+			appearfollowNav.slideDown();
+			// $("landing-logo").toggle();
+			appearfollowNav.css("display", "flex")
+			followNavContianer.css("position", "fixed");
+		}
+	},
+
 	setUpLanding: function(){
 		// $('#depart-date').datepicker();
 		// $('#return-date').datepicker();
@@ -126,6 +140,10 @@ var View = {
 			1, 
 			$(".depart-city").data("city-id"), 
 			$(".return-city").data("city-id"));
+		var waypoint = new Waypoint({
+  		element: document.getElementById('switch-follow-nav-waypoint'),
+  		handler: View.toggleFollowNav
+		})
 	},
 
 	toggleToFromCities: function(){

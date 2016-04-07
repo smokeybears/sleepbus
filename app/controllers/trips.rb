@@ -50,7 +50,7 @@ post "/trips/oneway" do
 			# status 406
 			# return "Sorry Doesn't look like we have any more seats available on that route".to_json
 		end
-	rescue ActiveRecord::ConnectionTimeoutError => e 
+	rescue g=> e 
 		puts e
 	end
 end

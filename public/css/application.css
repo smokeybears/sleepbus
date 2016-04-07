@@ -135,7 +135,73 @@ form-area {
 	
 /*}*/
 /**************************************
-Landing.erb 
+Landing Header
+*************************************/
+.follow-nav {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	padding: 0;
+	z-index: 1000;
+}
+
+.switch-follow-nav-waypoint{
+	position: absolute;
+	top: 20px
+}
+
+#appear-follow-nav {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	display: none;
+  align-items: center;
+	background: white;
+}
+
+#appear-follow-nav > * {
+	padding: 1%;
+}
+
+.book-trip-no-disappear {
+	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+	border-radius: 6px;
+	color: white;
+}
+
+.landing-header {
+	width: 100%;
+	height: 20px;
+	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+}
+
+.landing-logo {
+	max-width: 60%;
+}
+.nav-logo {
+	max-width: 30%
+}
+
+.base-head {
+	margin: 1%;
+	position: relative;
+	top: 20px;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+
+/**************************************
+Landing Main
 *************************************/
 
 .homepage-flex-box-container {
@@ -164,19 +230,38 @@ Landing.erb
 	align-content: center;
 }
 
-
-.homepage-info-container {
-	width: 80%;
-	margin: auto;
+.homepage-text-flex-box > * {
+	margin: 5% auto;
+	white-space: nowrap;
+	max-width: 100%;
+}
+.homepage-text-flex-box .info-text-lg {
+	font-family: 'Helvetica Neue';
+	font-size: 45px;
+	color: #505050;
+	line-height: 60px;
 }
 
-.landing-header {
-	width: 100%;
-	height: 20px;
-	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+.homepage-text-flex-box .info-text-sm {
+	/* SleepBus has nightly: */
+	font-family: 'Helvetica Neue';
+	font-size: 22px;
+	color: #505050;
+	line-height: 32px;
 }
+
+.homepage-text-flex-box .scroll-down{
+	/* Scroll Down to Learn: */
+	font-family: 'Helvetica Neue';
+	font-size: 14px;
+	color: #505050;
+	line-height: 32px;
+}
+
+.info-img img {
+ width: 60%;
+}
+
 .book-trip {
 /* Rectangle 2: */
 	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
@@ -186,17 +271,22 @@ Landing.erb
 	color: white;
 }
 
-.landing-logo {
-	max-width: 20%;
+
+.homepage-info-container {
+	width: 80%;
+	margin: auto;
 }
+
+.homepage-info-container  > * {
+	margin: 10% auto;
+}
+
 
 .book-trip {
 	border: none;
 }
 
-.base-head {
-	margin: 2%;
-}
+
 
 .info-text-lg {
 	font-size: 40px;
@@ -242,13 +332,22 @@ Landing.erb
 }
 
 .flex-reverse-wrap {
-	flex-wrap: wrap-reverse;
+	/*flex-wrap: wrap; */
+	/* Unintutive because switches to wrap-reverse on mobile, most likely better way to do this but quick fix*/
 }
+
+
+.info-0 {
+	background-image: url("/images/SF.png");
+	/*margin: 0 auto 5% auto;*/
+}
+
 @media (min-width: 766px) {
 	.mobile-book-trip {
  		display: none;
  	}
 }
+
 @media (max-width: 765px) {
  	.homepage-info-container {
  		/*display: flex;
@@ -259,10 +358,21 @@ Landing.erb
 		text-align: center;
  	}
 
- 	 .homepage-info-container > * {
- 	 		margin: auto;
- 	 		text-align: center;
- 		}
+	.scroll-down {
+		display: none;
+	}
+
+	.info-0 img {
+	display: none;
+	}
+
+	.info-img img {
+ 		width: 90%;
+	}
+ .homepage-info-container > * {
+ 		margin: auto;
+ 		text-align: center;
+	}
 
  	.book-trip {
  		display: none;
@@ -273,8 +383,15 @@ Landing.erb
  	}
 
  	.mobile-book-trip {
- 		display: block;
- 		margin: 3% auto 3% auto;
+	 	display: block;
+	 	margin: 10% auto 15% auto;
+	 	width: 100%;
+	 	background-image: -webkit-linear-gradient(#74C947 0%, #4BC459 100%);
+	 	background-image: -o-linear-gradient(#74C947 0%, #4BC459 100%);
+	 	background-image: linear-gradient(#74C947 0%, #4BC459 100%);
+	 	box-shadow: 0px 0px 55px 0px rgba(0,0,0,0.13);
+	 	border-radius: 4px;
+	 	border: none;
  	}
 	.modal {
 		position: fixed;
@@ -304,6 +421,9 @@ Landing.erb
 		overflow: auto;
 	}
 
+	.flex-reverse-wrap {
+		flex-wrap: wrap-reverse;
+	}
 
 }
 /**************************************
@@ -396,7 +516,7 @@ Confirmation Page
 /*************************************
 Checkout confirmation
 *************************************/
-.stripe-checkout-success{
+.stripe-checkout-success {
 	text-align: center;
 	width: 80%;
 	margin: auto;
@@ -405,9 +525,29 @@ Checkout confirmation
 .stripe-checkout-success ul li i {
 	color: rgb(74, 175, 70);
 }
+
 .stripe-checkout-success ul {
 	list-style: none;
 	text-align: center;
+}
+
+/*************************************
+Retina Display 
+*************************************/
+@media only screen and (min--moz-device-pixel-ratio: 2),
+
+only screen and (-o-min-device-pixel-ratio: 2/1),
+
+only screen and (-webkit-min-device-pixel-ratio: 2),
+
+only screen and (min-device-pixel-ratio: 2) {
+
+	.image {
+
+	    background: url(/path/to/my/highreslogo.png) no-repeat;
+
+	    background-size: 200px 400px;
+	}
 }
 /*************************************
 Footer
@@ -435,4 +575,4 @@ Footer
 .footer-options a {
 	font-style: none;
 	color: white;
-}
+}/

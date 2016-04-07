@@ -1,21 +1,23 @@
-<div class="landing-header"></div>
-<div class="container-fluid base-head">
-		<div class="row">
-			<div class="col-sm-4 center"><img class="landing-logo" src="/images/sleepbus-text-logo.png" alt="sleepbus logo"></div>
+<%= erb :follow_nav %>
+<div id="switch-follow-nav-waypoint"></div> 
+<!-- Id is later switched to hide-follow-nav-waypoint -->
+<div id="follow-nav" class="container-fluid base-head">
+	<div class="row">
+			<div class="col-sm-4 center"><img class="landing-logo" src="/svgs/LOGO.svg" alt="sleepbus logo"></div>
 			<div class="col-sm-4"></div>
-			<div class="col-sm-4 center"><button class="book-trip btn btn-lg"> Book Trip Now</button></div>
+			<div class="col-sm-4 center"><!-- button class="book-trip btn btn-lg"> Book Trip Now</button> --></div>
 	</div>
 </div>
 
 <div class="container-fluid homepage-info-container landing-block">
 	<% info_array.each_with_index do |info_hash, index| %>
 		<% if index % 2 != 0 %>
-			<div class="row simple-flex flex-reverse-wrap info-<%= index %>">
+			<div class="row simple-flex info-<%= index %>">
 				<%= erb :info_image, :locals => {image_url: info_hash["image_url"]} %>
 				<%= erb :info_text, :locals => {info_hash: info_hash, index: index} %>
 			</div>
 		<% else %>
-			<div class="row simple-flex info-<%= index %>">
+			<div class="row simple-flex flex-reverse-wrap info-<%= index %>">
 				<%= erb :info_text, :locals => {info_hash: info_hash, index: index} %>
 				<%= erb :info_image, :locals => {image_url: info_hash["image_url"]} %>
 			</div>
