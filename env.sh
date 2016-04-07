@@ -1,0 +1,2 @@
+export DATABASE_URL="postgres://oxgbvlngusorck:B02-G5iFCaGo3jJyWEqbyayiL3@ec2-54-243-207-88.compute-1.amazonaws.com:5432/df3ka0ehvofv7g?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
+export PS1="(api) $PS1"

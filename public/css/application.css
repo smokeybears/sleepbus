@@ -13,6 +13,18 @@ body{
 	padding: 0px;
 }
 
+button {
+	border: 0px !important;
+}
+
+button:hover {
+	color: white !important;
+}
+
+button:active {
+	color: white !important;
+}
+
 .center {
 	text-align: center;
 }
@@ -152,7 +164,7 @@ Landing Header
 	top: 20px
 }
 
-#appear-follow-nav {
+#appear-follow-nav  {
 	position: relative;
 	top: 0;
 	left: 0;
@@ -163,18 +175,19 @@ Landing Header
 	background: white;
 }
 
+
 #appear-follow-nav > * {
 	padding: 1%;
 }
 
-#appear-follow-nav div img {
-
+#appear-follow-nav button:active {
+	
 }
 
 .book-trip-no-disappear {
-	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+	background-image: -webkit-linear-gradient(#1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient(#1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient(#1299F5 1%, #1173F0 100%);
 	border-radius: 6px;
 	color: white;
 }

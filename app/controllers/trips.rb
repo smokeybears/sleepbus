@@ -76,5 +76,9 @@ get "/trips/availability" do
 	end
 
 	content_type :json
-	return [depart_trips, return_trips].to_json
+	if return_trips
+		return [depart_trips, return_trips].to_json
+	else
+		return [depart_trips].to_json
+	end
 end
