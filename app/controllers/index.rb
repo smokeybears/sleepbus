@@ -42,33 +42,41 @@ get "/" do
 	fhq_array = [
 		{
  
-			"question" => "Lorem ipsum dolor sit amet consectetur?",
-			"answer" => "Nobis facilis modi reiciendis, hic eveniet voluptatem itaque incidunt non quisquam, dicta repellat!"
+			"question" => "What are the pick-up and drop-off locations?",
+			"answer" => "We're starting our services in the Mission District in San Francisco and in Santa Monica in Los Angeles. See below for specific locations. <br> <br> Los Angeles pick up and drop off: Santa Monica Parking, 1550 Pacific Coast Highway
+San Francisco pick up and drop off: Zeitgeist, 199 Valencia Street"
 		},
 		{
 		
-			"question" => "Lorem ipsum dolor sit amet consectetur?",
-			"answer" => "Nobis facilis modi reiciendis, hic eveniet voluptatem itaque incidunt non quisquam, dicta repellat!"
+			"question" => "What are the amenities on the SleepBus?",
+			"answer" => "A privacy screen for each bed, personal power outlets, WiFi, fresh sheets, coffee, tea, seating areas, and a restroom. We also will have a SleepBus attendant on each service to answer any of your questions and to serve as your point of contact during the ride."
 		},
 		{
 		
-			"question" => "Lorem ipsum dolor sit amet consectetur?",
-			"answer" => "Nobis facilis modi reiciendis, hic eveniet voluptatem itaque incidunt non quisquam, dicta repellat!"
+			"question" => "Is there WiFi on the SleepBus?",
+			"answer" => "Yes. We ask our passengers to not use video-streaming devices or services during the SleepBus ride to ensure quality of WiFi for the rest of the passengers.
+"
 		},
 		{
 		
-			"question" => "Lorem ipsum dolor sit amet consectetur?",
-			"answer" => "Nobis facilis modi reiciendis, hic eveniet voluptatem itaque incidunt non quisquam, dicta repellat!"
+			"question" => "What linens are used on the bus?",
+			"answer" => "We are using 100% cotton sheets."
 		},
 		{
 		
-			"question" => "Lorem ipsum dolor sit amet consectetur?",
-			"answer" => "Nobis facilis modi reiciendis, hic eveniet voluptatem itaque incidunt non quisquam, dicta repellat!"
+			"question" => "How early should I arrive for check in and how long can I stay before I need to check out?",
+			"answer" => "You should aim to arrive at the pick up location 20 minutes before departure. Upon arrival, check-out time is 30 minutes after arrival. Departure time is 11pm sharp in both San Francisco and Los Angeles."
 		},
 		{
 		
-			"question" => "Lorem ipsum dolor sit amet consectetur?",
-			"answer" => "Nobis facilis modi reiciendis, hic eveniet voluptatem itaque incidunt non quisquam, dicta repellat!"
+			"question" => "How long is the bus ride?",
+			"answer" => "Given normal traffic and weather conditions, we expect the bus ride to last 6 hours.
+"
+		},
+		{
+		
+			"question" => "What are the departure and arrival times in SF and LA?",
+			"answer" => "Departure time will always be 11pm sharp. Arrival times will vary, though we expect to arrive in either city by 5am or 6am."
 		}
 	]
 	erb :landing, :locals => { info_array: page_information, amenities_array: amenities_array, fhq_array: fhq_array}
