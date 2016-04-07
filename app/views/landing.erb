@@ -8,38 +8,45 @@
 			<div class="col-sm-4 center"><!-- button class="book-trip btn btn-lg"> Book Trip Now</button> --></div>
 	</div>
 </div>
+<div class="sf-background-image-holder background-image-holder">
+	<div class="skyline-background sf-skyline"></div>
+</div>
+	<!-- <img src="/images/SF.png" srcset="/images/SF@2x.png 2x" alt="SF skyline" class="skyline-background sf-skyline "> -->
+	<!-- <img src="/images/LA.png" srcset="/images/LA@2x.png 2x" alt="LA skyline" class="skyline-background la-skyline "> -->
 
 <div class="container-fluid homepage-info-container landing-block">
 	<% info_array.each_with_index do |info_hash, index| %>
 		<% if index % 2 != 0 %>
 			<div class="row simple-flex info-<%= index %>">
-				<%= erb :info_image, :locals => {image_url: info_hash["image_url"]} %>
+				<%= erb :info_image, :locals => {base_image_url: info_hash["base_image_url"], srcset_image_urls: info_hash["srcset_image_ulrs"]} %>
 				<%= erb :info_text, :locals => {info_hash: info_hash, index: index} %>
 			</div>
 		<% else %>
 			<div class="row simple-flex flex-reverse-wrap info-<%= index %>">
 				<%= erb :info_text, :locals => {info_hash: info_hash, index: index} %>
-				<%= erb :info_image, :locals => {image_url: info_hash["image_url"]} %>
+				<%= erb :info_image, :locals => {base_image_url: info_hash["base_image_url"], srcset_image_urls: info_hash["srcset_image_ulrs"]} %>
 			</div>
 		<% end %>
 	<% end %>
 
 	<div class="row amenities landing-block">
-		<hr>
-			<% amenities_array.each do |amenities_hash| %>
-				<%= erb :amenities, :locals => {amenities_hash: amenities_hash} %>
+		<hr class="no-display-mobile">
+			<% amenities_array.each do |amenitie_hash| %>
+				<%= erb :amenities, :locals => {amenitie_hash: amenitie_hash} %>
 			<% end %>
-		<hr>
 	</div>
-	<hr> 
 	<div class="row fhq landing-block">
 		<% fhq_array.each do |fhq| %>
 			<%= erb :fhq, :locals => {question: fhq["question"], answer: fhq["answer"]} %>
 		<% end %>
 	</div>
-	<!-- <div class="row talk-with-tom"> -->
-	<!-- </div> -->
+	<div class="row talk-with-tom">
+		<%= erb :chat %>
+	</div>
 </div>
+<!-- <div class="la-background-image-holder background-image-holder">
+	<div class="skyline-background la-skyline"></div>
+</div> -->
 <footer>
 	<%= erb :footer %>
 </footer>

@@ -33,16 +33,19 @@ post "/stripe/charge" do
   end
 
   #if !(env['sinatra.error'].message) # if is somewhat uneccessary because the route will have already returned if an error occured due to the rescues, but this works as a last catch all
+  ticket_ids = []
   session[:passengers].each do |passenger|
-    Ticket.create({
+   ticket = Ticket.create({
       passenger_id: passenger.id,
       trip_id: session[:trip_ids][0]
     })
+    ticket_ids << ticket.id
     if session[:trip_ids][1]
-      Ticket.create({
+     ticket = Ticket.create({
         passenger_id: passenger.id,
         trip_id: session[:trip_ids][1]
       })
+      ticket_ids << ticket.id
     end
   end
   # should add test here to see if charge went through
@@ -51,5 +54,5 @@ post "/stripe/charge" do
   # confirmPage = erb :payment_success
   # content_type :json
   # return confirmPage.to_json
-  erb :payment_success, :layout => false
+  erb :payment_success, :locals => {ticket_ids: ticket_ids}
 end

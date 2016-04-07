@@ -3,5 +3,9 @@
   	<li><i class="icon-checkmark-circle"></i></li>
   	<li><h1>You're All Set!</h1></li>
   	<li><h3>We will be sending you a confirmation email in the next few hours</h3></li>
+  	<li>Ticket ID's</li>
+  	<% ticket_ids.each do |ticket_id| %>
+			<li>#<%= ticket_id %></li>
+  	<% end %>
   </ul>
 </div>

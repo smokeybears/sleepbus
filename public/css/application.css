@@ -2,6 +2,49 @@
 General
 *************************************/
 
+@font-face {
+    font-family: 'icomoon';
+    src:    url('/./fonts/icomoon.eot?d5wkwp');
+    src:    url('/./fonts/icomoon.eot?d5wkwp#iefix') format('embedded-opentype'),
+        url('/./fonts/icomoon.ttf?d5wkwp') format('truetype'),
+        url('/./fonts/icomoon.woff?d5wkwp') format('woff'),
+        url('/./fonts/icomoon.svg?d5wkwp#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-checkmark-circle:before {
+    content: "\e907";
+}
+
+.icon-checkmark-circle: {
+	font-size: 75px;
+}
+.icon-close:before {
+    content: "\e906";
+}
+.icon-loop:before {
+    content: "\e900";
+}
+.icon-arrow-right:before {
+    content: "\e905";
+}
+
 html, body {
     margin: 0;
     height: 100%;
@@ -27,6 +70,14 @@ button:active {
 
 .center {
 	text-align: center;
+}
+
+.btn-style  {
+	background-image: -webkit-linear-gradient( #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient( #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient( #1299F5 1%, #1173F0 100%);
+	border-radius: 6px;
+	color: white;
 }
 
 h2 {
@@ -66,9 +117,17 @@ img {
 
 
 .simple-flex {
-	display: flex;
+	display: -webkit-box;      
+  display: -moz-box;         
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex;  
 	align-items: center;
 	flex-wrap: wrap;
+}
+
+.flex-column {
+	flex-direction: column;
 }
 
 
@@ -184,20 +243,13 @@ Landing Header
 	
 }
 
-.book-trip-no-disappear {
-	background-image: -webkit-linear-gradient(#1299F5 1%, #1173F0 100%);
-	background-image: -o-linear-gradient(#1299F5 1%, #1173F0 100%);
-	background-image: linear-gradient(#1299F5 1%, #1173F0 100%);
-	border-radius: 6px;
-	color: white;
-}
 
 .landing-header {
 	width: 100%;
 	height: 20px;
-	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+	background-image: -webkit-linear-gradient( #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient( #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient( #1299F5 1%, #1173F0 100%);
 }
 
 .landing-logo {
@@ -221,10 +273,15 @@ Landing Header
 Landing Main
 *************************************/
 
+
 .homepage-flex-box-container {
 	width: 70%;
 	margin: 1% auto auto auto;
-	display: flex;
+	display: -webkit-box;      
+  display: -moz-box;         
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex;  
 	flex-direction: row;
 	justify-content: center;
 	flex-wrap: nowrap;
@@ -239,12 +296,20 @@ Landing Main
 
 
 .homepage-text-flex-box {
-	display: flex;
-	lex-direction: column;
+	 display: -webkit-box;      
+  display: -moz-box;         
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex;  
+	flex-direction: column;
 	justify-content: center;
 	flex-wrap: nowrap;
 	align-items: center;
 	align-content: center;
+}
+
+.text-block {
+	padding: 12% 0;
 }
 
 .homepage-text-flex-box > * {
@@ -252,16 +317,17 @@ Landing Main
 	white-space: nowrap;
 	max-width: 100%;
 }
-.homepage-text-flex-box .info-text-lg {
-	font-family: 'Helvetica Neue';
+
+.info-text-lg {
+	font-family: 'Lato', sans-serif;
 	font-size: 45px;
 	color: #505050;
-	line-height: 60px;
+	line-height: 40px;
 }
 
-.homepage-text-flex-box .info-text-sm {
+.info-text-sm {
 	/* SleepBus has nightly: */
-	font-family: 'Helvetica Neue';
+	font-family: 'Lato', sans-serif;
 	font-size: 22px;
 	color: #505050;
 	line-height: 32px;
@@ -269,21 +335,24 @@ Landing Main
 
 .homepage-text-flex-box .scroll-down{
 	/* Scroll Down to Learn: */
-	font-family: 'Helvetica Neue';
+	font-family: 'Lato', sans-serif;
 	font-size: 14px;
 	color: #505050;
 	line-height: 32px;
 }
 
 .info-img img {
- width: 60%;
+ width: 55%;
+}
+
+.info-0 {
+		margin-top: 0;
 }
 
 .book-trip {
-/* Rectangle 2: */
-	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
-	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+	background-image: -webkit-linear-gradient( #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient( #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient( #1299F5 1%, #1173F0 100%);
 	border-radius: 6px;
 	color: white;
 }
@@ -295,7 +364,7 @@ Landing Main
 }
 
 .homepage-info-container  > * {
-	margin: 10% auto;
+	margin: 0% auto -8% auto;
 }
 
 
@@ -303,10 +372,21 @@ Landing Main
 	border: none;
 }
 
-
-
 .info-text-lg {
 	font-size: 40px;
+}
+
+.landing-block {
+	padding: 0 0 6% 0;
+	margin: 3% auto;
+}
+
+.info-text-sm {
+	margin: 0 0 4% 0;
+}
+
+.mobile-hr-display {
+	display: none;
 }
 
 .amenitie {
@@ -328,35 +408,45 @@ Landing Main
 }
 
 .fhq-question {
-	font-size: 18px,
+	font-size: 16px;
+	color: #505050;
+	line-height: 24px;
 }
 
 .fhq-answer {
-	font-size: 15px,	
+	font-size: 14px;
+	color: #505050;
+	line-height: 24px;	
+}
+.question-block {
+	padding: 3%;
+}
+.question-block div {
+	padding: 2%;
 }
 
 
-.fhq div {
-	padding: 1%;
-}
 
-.landing-block {
-	padding: 6% 0 6% 0;
-}
-
-.info-text-sm {
-	margin: 0 0 4% 0;
-}
-
-.flex-reverse-wrap {
-	/*flex-wrap: wrap; */
-	/* Unintutive because switches to wrap-reverse on mobile, most likely better way to do this but quick fix*/
+.chat-box {
+	border: 2px solid rgba(59, 59, 59, 0.3);
+	border-radius: 10px;
+	padding: 6% 0;
 }
 
 
 .info-0 {
-	background-image: url("/images/SF.png");
+	/*background-image: url("/images/SF.png");*/
 	/*margin: 0 auto 5% auto;*/
+}
+.no-display-mobile {
+	display: block;
+}
+.talk-with-tom {
+	white-space: nowrap;	
+}
+
+.chat-with-tom {
+	margin: 5% auto;
 }
 
 @media (min-width: 766px) {
@@ -366,26 +456,41 @@ Landing Main
 }
 
 @media (max-width: 765px) {
+	.mobile-hr-display {
+		display: block;
+		width: 200%;
+  	margin-left: -50%
+	}
+
+	.no-display-mobile {
+		display: none;
+	}
+
+	.footer-options {
+		display: none;
+	}
+
  	.homepage-info-container {
- 		/*display: flex;
- 		text-align: center;
- 		align-items: center;
-		align-content: center;
-		justify-content: center;*/
 		text-align: center;
  	}
+	
+	.amenitie {
+		margin: 20% auto;	
+	}
 
 	.scroll-down {
 		display: none;
 	}
+
 
 	.info-0 img {
 	display: none;
 	}
 
 	.info-img img {
- 		width: 90%;
+ 		width: 100%;
 	}
+
  .homepage-info-container > * {
  		margin: auto;
  		text-align: center;
@@ -398,6 +503,10 @@ Landing Main
  	.landing-logo {
  		max-width: 40%;
  	}
+
+	.fhq {
+		text-align: left;
+	}
 
  	.mobile-book-trip {
 	 	display: block;
@@ -415,8 +524,11 @@ Landing Main
 	}
 
  	.modal-panel {
- 		/*position: fixed;*/
- 		display: flex;
+	 	display: -webkit-box;      
+	  display: -moz-box;         
+	  display: -ms-flexbox;      
+	  display: -webkit-flex;     
+	  display: flex;  
  		align-items: center;
 		align-content: center;
 		width: 100%;
@@ -446,13 +558,19 @@ Landing Main
     max-width: 45%;
 	}
 
+
+
 }
 /**************************************
 Forms styling
 *************************************/
 
 .trip-type {
-	display: flex;
+ 	display: -webkit-box;      
+  display: -moz-box;         
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex;  	
 	align-items: center;
 	align-content: center;
 	justify-content: center;
@@ -480,7 +598,11 @@ Forms styling
 .direction-selection {
 	width: 70%;
 	margin: 1% auto auto auto;
-	display: flex;
+	display: -webkit-box;      
+  display: -moz-box;         
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex;  
 	flex-direction: row;
 	justify-content: center;
 	flex-wrap: nowrap;
@@ -570,6 +692,66 @@ only screen and (min-device-pixel-ratio: 2) {
 	    background-size: 200px 400px;
 	}
 }
+
+/**************************************
+Background Image Styling
+*************************************/
+.background-image-holder{
+	opacity: .7;
+	z-index: -100;
+	position: absolute;
+	width: 100%;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.sf-background-image-holder{
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.sf-skyline {
+	background: url(/images/SF@2x.png) no-repeat center center fixed; 
+	position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+.la-background-image-holder {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+.la-skyline {
+	background: url(/images/LA@2x.png) no-repeat center center fixed; 
+	position: relative;
+  width: 100%;
+  height: 100%;
+}
+*/
+.skyline-background {
+	width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media (max-width: 765px) {
+/*	.sf-skyline {
+		top: 20%;
+	}
+
+	.la-skyline {
+		top: 90%;
+	}*/
+}
 /*************************************
 Footer
 *************************************/
@@ -577,7 +759,11 @@ Footer
 	background: rgb(29, 36, 49);
 	height: 50px;
 	color: white;
-	display: flex;
+	display: -webkit-box;      
+  display: -moz-box;         
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex;  
 	align-items: center;
 	align-content: center;
 	justify-content: center;
