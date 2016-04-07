@@ -149,12 +149,12 @@ Form Modal Styling
 	justify-content: center;
 	position: fixed;
 	background: linear-gradient(-180deg, #676767 0%, #383838 100%);
-
+	overflow: auto;
 }
 
 .modal-panel {
 	width: 40%;
-	height: 500px;	
+  height: 625px;
 }
 
 .modal-panel > * {
@@ -170,7 +170,7 @@ Form Modal Styling
 }
 
 .modal-close:hover {
-	color: rgb(65, 134, 247);	
+	color: rgb(65, 134, 247);
 }
 /**************************************
 General Form Styling
@@ -203,7 +203,7 @@ form-area {
 }
 
 /*.direction-selection > * {*/
-	
+
 /*}*/
 /**************************************
 Landing Header
@@ -241,7 +241,7 @@ Landing Header
 }
 
 #appear-follow-nav button:active {
-	
+
 }
 
 
@@ -396,7 +396,7 @@ Landing Main
 	color: #505050;
 	line-height: 32px;
 	color: gray;
-	
+
 }
 
 .amenitie i {
@@ -459,8 +459,8 @@ Landing Main
 @media (max-width: 765px) {
 	.mobile-hr-display {
 		display: block;
-		width: 200%;
-  	margin-left: -50%
+/*		width: 200%;
+  	margin-left: -50%*/
 	}
 
 	.no-display-mobile {
@@ -584,15 +584,15 @@ Forms styling
 }
 
 #roundtrip {
-	
+
 }
 
 .trip-type .selected {
-	background: rgb(65, 134, 247);	
+	background: rgb(65, 134, 247);
 }
 
 .trip-type .non-selected:hover {
-	background: rgba(40, 114, 227, 0.8);		
+	background: rgba(40, 114, 227, 0.8);
 }
 
 
@@ -622,14 +622,14 @@ Forms styling
 }
 
 .div-line {
-	width: 100%; 
-	height: 5px; 
+	width: 100%;
+	height: 5px;
 	/*border-bottom: 3px solid gray; */
 	text-align: center
 }
 
 .div-line-text {
-	font-size: 15px; 
+	font-size: 15px;
 	padding: 0 10px;
 	cursor: default;
 	color: white;
@@ -676,7 +676,7 @@ Checkout confirmation
 }
 
 /*************************************
-Retina Display 
+Retina Display
 *************************************/
 @media only screen and (min--moz-device-pixel-ratio: 2),
 
