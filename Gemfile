@@ -15,16 +15,17 @@ gem 'shotgun'
 gem "stripe"
 gem "dotenv"
 gem "bcrypt"
+gem 'faker'
 
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
   gem 'rspec'
-  gem 'capybara'
+  # gem 'capybara'
 end
 
 group :test, :development do
 	gem 'hirb'
   gem 'factory_girl'
-  gem 'faker'
+  
 end

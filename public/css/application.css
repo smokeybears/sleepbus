@@ -1,41 +1,11 @@
 /**************************************
 General
 *************************************/
-@font-face {
-    font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?9t71m4');
-    src:    url('../fonts/icomoon.eot?9t71m4#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?9t71m4') format('truetype'),
-        url('../fonts/icomoon.woff?9t71m4') format('woff'),
-        url('../fonts/icomoon.svg?9t71m4#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    text-rendering: optimizeLegibility;
-    line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-loop:before {
-    content: "\e900";
-}
-
 
 html, body {
     margin: 0;
     height: 100%;
+    color: #505050;
 }
 
 body{
@@ -71,10 +41,71 @@ h5 {
 	line-height: 32px;
 }
 
+img {
+	max-width: 100%;
+}
+
+
+.vcenter {  /* vertical align for bootstrap items*/
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+
+.simple-flex {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+
+
+/**************************************
+Form Modal Styling
+*************************************/
+.modal {
+	background: rgba(100, 100, 100, 0.7);
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 500;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	position: fixed;
+	background: linear-gradient(-180deg, #676767 0%, #383838 100%);
+
+}
+
+.modal-panel {
+	width: 40%;
+	height: 500px;	
+}
+
+.modal-panel > * {
+	width: 100%;
+}
+
+.modal-close {
+	color: white;
+	position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 40px;
+}
+
+.modal-close:hover {
+	color: rgb(65, 134, 247);	
+}
 /**************************************
 General Form Styling
 *************************************/
-body {
+
+form-area {
 	background-image: linear-gradient(-180deg, #676767 0%, #383838 100%);
 	width: 100%;
 }
@@ -97,11 +128,342 @@ body {
     border-color: #e93801;
     color: #e93801;
     width: 70%;
-    margin: auto
+   	margin: auto
+}
+
+/*.direction-selection > * {*/
+	
+/*}*/
+/**************************************
+Landing Header
+*************************************/
+.follow-nav {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	padding: 0;
+	z-index: 500;
+}
+
+.switch-follow-nav-waypoint{
+	position: absolute;
+	top: 20px
+}
+
+#appear-follow-nav {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	display: none;
+  align-items: center;
+	background: white;
+}
+
+#appear-follow-nav > * {
+	padding: 1%;
+}
+
+#appear-follow-nav div img {
+
+}
+
+.book-trip-no-disappear {
+	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+	border-radius: 6px;
+	color: white;
+}
+
+.landing-header {
+	width: 100%;
+	height: 20px;
+	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+}
+
+.landing-logo {
+	max-width: 60%;
+}
+.nav-logo {
+	max-width: 30%
+}
+
+.base-head {
+	margin: 1%;
+	position: relative;
+	top: 20px;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+
+/**************************************
+Landing Main
+*************************************/
+
+.homepage-flex-box-container {
+	width: 70%;
+	margin: 1% auto auto auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: nowrap;
+	align-items: center;
+	align-content: center;
+	/*font-size: 45px;*/
+}
+
+.homepage-flex-box-container > div {
+	display: block;
+}
+
+
+.homepage-text-flex-box {
+	display: flex;
+	lex-direction: column;
+	justify-content: center;
+	flex-wrap: nowrap;
+	align-items: center;
+	align-content: center;
+}
+
+.homepage-text-flex-box > * {
+	margin: 5% auto;
+	white-space: nowrap;
+	max-width: 100%;
+}
+.homepage-text-flex-box .info-text-lg {
+	font-family: 'Helvetica Neue';
+	font-size: 45px;
+	color: #505050;
+	line-height: 60px;
+}
+
+.homepage-text-flex-box .info-text-sm {
+	/* SleepBus has nightly: */
+	font-family: 'Helvetica Neue';
+	font-size: 22px;
+	color: #505050;
+	line-height: 32px;
+}
+
+.homepage-text-flex-box .scroll-down{
+	/* Scroll Down to Learn: */
+	font-family: 'Helvetica Neue';
+	font-size: 14px;
+	color: #505050;
+	line-height: 32px;
+}
+
+.info-img img {
+ width: 60%;
+}
+
+.book-trip {
+/* Rectangle 2: */
+	background-image: -webkit-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: -o-linear-gradient(left, #1299F5 1%, #1173F0 100%);
+	background-image: linear-gradient(to right, #1299F5 1%, #1173F0 100%);
+	border-radius: 6px;
+	color: white;
+}
+
+
+.homepage-info-container {
+	width: 80%;
+	margin: auto;
+}
+
+.homepage-info-container  > * {
+	margin: 10% auto;
+}
+
+
+.book-trip {
+	border: none;
+}
+
+
+
+.info-text-lg {
+	font-size: 40px;
+}
+
+.amenitie {
+	text-align: center;
+	font-size: 18px;
+	color: #505050;
+	line-height: 32px;
+	color: gray;
+	
+}
+
+.amenitie i {
+	color: #1080F2;
+	font-size: 30px;
+}
+
+.fhq {
+	margin: 0 -6% 0 0;
+}
+
+.fhq-question {
+	font-size: 18px,
+}
+
+.fhq-answer {
+	font-size: 15px,	
+}
+
+
+.fhq div {
+	padding: 1%;
+}
+
+.landing-block {
+	padding: 6% 0 6% 0;
+}
+
+.info-text-sm {
+	margin: 0 0 4% 0;
+}
+
+.flex-reverse-wrap {
+	/*flex-wrap: wrap; */
+	/* Unintutive because switches to wrap-reverse on mobile, most likely better way to do this but quick fix*/
+}
+
+
+.info-0 {
+	background-image: url("/images/SF.png");
+	/*margin: 0 auto 5% auto;*/
+}
+
+@media (min-width: 766px) {
+	.mobile-book-trip {
+ 		display: none;
+ 	}
+}
+
+@media (max-width: 765px) {
+ 	.homepage-info-container {
+ 		/*display: flex;
+ 		text-align: center;
+ 		align-items: center;
+		align-content: center;
+		justify-content: center;*/
+		text-align: center;
+ 	}
+
+	.scroll-down {
+		display: none;
+	}
+
+	.info-0 img {
+	display: none;
+	}
+
+	.info-img img {
+ 		width: 90%;
+	}
+ .homepage-info-container > * {
+ 		margin: auto;
+ 		text-align: center;
+	}
+
+ 	.book-trip {
+ 		display: none;
+ 	}
+
+ 	.landing-logo {
+ 		max-width: 40%;
+ 	}
+
+ 	.mobile-book-trip {
+	 	display: block;
+	 	margin: 10% auto 15% auto;
+	 	width: 100%;
+	 	background-image: -webkit-linear-gradient(#74C947 0%, #4BC459 100%);
+	 	background-image: -o-linear-gradient(#74C947 0%, #4BC459 100%);
+	 	background-image: linear-gradient(#74C947 0%, #4BC459 100%);
+	 	box-shadow: 0px 0px 55px 0px rgba(0,0,0,0.13);
+	 	border-radius: 4px;
+	 	border: none;
+ 	}
+	.modal {
+		position: fixed;
+	}
+
+ 	.modal-panel {
+ 		/*position: fixed;*/
+ 		display: flex;
+ 		align-items: center;
+		align-content: center;
+		width: 100%;
+/*		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 500;*/
+		margin: auto;
+		text-align: center;
+	}
+
+	.modal-close {
+		font-size: 30px;
+	}
+
+	.confirmation-view {
+		text-align: left;
+		overflow: auto;
+	}
+
+	.flex-reverse-wrap {
+		flex-wrap: wrap-reverse;
+	}
+
+	.nav-logo {
+    max-width: 45%;
+	}
+
 }
 /**************************************
-Landing.erb 
+Forms styling
 *************************************/
+
+.trip-type {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+}
+
+.trip-type div {
+	background: none;
+	border-color: none;
+	color: white;
+}
+
+#roundtrip {
+	
+}
+
+.trip-type .selected {
+	background: rgb(65, 134, 247);	
+}
+
+.trip-type .non-selected:hover {
+	background: rgba(40, 114, 227, 0.8);		
+}
+
+
 .direction-selection {
 	width: 70%;
 	margin: 1% auto auto auto;
@@ -119,6 +481,10 @@ Landing.erb
 	margin: 10%;
 }
 
+.direction-selection > *{
+	max-width: 100%;
+}
+
 .div-line {
 	width: 100%; 
 	height: 5px; 
@@ -132,6 +498,12 @@ Landing.erb
 	cursor: default;
 	color: white;
 }
+
+.user-info-forms-holder{
+	overflow: auto;
+}
+
+
 
 /*************************************
 Confirmation Page
@@ -148,3 +520,67 @@ Confirmation Page
 .confirmation-view h5 {
 	color: white;
 }
+
+/*************************************
+Checkout confirmation
+*************************************/
+.stripe-checkout-success {
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+
+.stripe-checkout-success ul li i {
+	color: rgb(74, 175, 70);
+}
+
+.stripe-checkout-success ul {
+	list-style: none;
+	text-align: center;
+}
+
+/*************************************
+Retina Display 
+*************************************/
+@media only screen and (min--moz-device-pixel-ratio: 2),
+
+only screen and (-o-min-device-pixel-ratio: 2/1),
+
+only screen and (-webkit-min-device-pixel-ratio: 2),
+
+only screen and (min-device-pixel-ratio: 2) {
+
+	.image {
+
+	    background: url(/path/to/my/highreslogo.png) no-repeat;
+
+	    background-size: 200px 400px;
+	}
+}
+/*************************************
+Footer
+*************************************/
+.footer {
+	background: rgb(29, 36, 49);
+	height: 50px;
+	color: white;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/*.footer-options {
+	display: flex;
+	flex-wrap: wrap;
+}*/
+
+.footer > *{
+	width: 80%;
+}
+
+.footer-options a {
+	font-style: none;
+	color: white;
+}/

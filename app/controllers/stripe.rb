@@ -17,7 +17,7 @@ post "/stripe/charge" do
 
   begin
     charge = Stripe::Charge.create(
-      :amount      => (params["cost"].to_i * 100),
+      :amount      => (params["cost"].to_i),
       :description => 'SleepBus ticket',
       :currency    => 'usd',
       :customer    => customer.id
@@ -38,11 +38,12 @@ post "/stripe/charge" do
       passenger_id: passenger.id,
       trip_id: session[:trip_ids][0]
     })
-    Ticket.create({
-      passenger_id: passenger.id,
-      trip_id: session[:trip_ids][1]
-    })
-   # end
+    if session[:trip_ids][1]
+      Ticket.create({
+        passenger_id: passenger.id,
+        trip_id: session[:trip_ids][1]
+      })
+    end
   end
   # should add test here to see if charge went through
 
