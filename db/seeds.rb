@@ -132,7 +132,7 @@ la = City.create(
 				:depart_date		=> Date.parse("2016-05-01"),
 				:arrive_date		=> Date.parse("2016-04-02")
 		)
-end
+
 
 # passenger_ids.each do |passenger_id| # creates enough ticket for the trip where booking one user should work but booking two should fail
 # 	Ticket.create(
