@@ -236,6 +236,10 @@ startListeners = function(){
 		View.toggleDatePickerLoading() // We have to disable the date picker while the ajax call for availble dates is being made otherwise the user could select a date before the date picker is refreshed
 	})
 
+	$(document).on("click", "datepicker", function(){
+		$(this).blur();		
+	});
+	
 	$(document).on("click", ".send-user-info", function(event){
 		event.preventDefault();
 		var passengersInfo = {};
