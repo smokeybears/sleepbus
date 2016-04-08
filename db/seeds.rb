@@ -24,7 +24,7 @@ la = City.create(
 
 # (18..22).each do |num|
 	# if num % 2 == 0
-		trip_to_sf = Trip.create(
+		trip_from_sf = Trip.create(
 			:bus_id 				=> bus.id,
 			:depart_city_id => sf.id, 
 			:seats_left			=> 19,
@@ -38,8 +38,8 @@ la = City.create(
 			:depart_city_id => sf.id, 
 			:seats_left			=> 19,
 			:end_city_id 		=> la.id, 
-			:depart_date		=> Date.parse("2016-04-21"),
-			:arrive_date		=> Date.parse("2016-04-22")
+			:depart_date		=> Date.parse("2016-04-20"),
+			:arrive_date		=> Date.parse("2016-04-21")
 		)		
 
 		 Trip.create(
@@ -47,7 +47,7 @@ la = City.create(
 			:depart_city_id => sf.id, 
 			:seats_left			=> 19,
 			:end_city_id 		=> la.id, 
-			:depart_date		=> Date.parse("2016-04-23"),
+			:depart_date		=> Date.parse("2016-04-22"),
 			:arrive_date		=> Date.parse("2016-04-24")
 		)
 
@@ -74,7 +74,7 @@ la = City.create(
 		 	:depart_city_id => sf.id, 
 		 	:seats_left			=> 19,
 		 	:end_city_id 		=> la.id, 
-		 	:depart_date		=> Date.parse("2016-04-30"),
+		 	:depart_date		=> Date.parse("2016-04-29"),
 		 	:arrive_date		=> Date.parse("2016-05-01")
 		 )
 
@@ -90,7 +90,17 @@ la = City.create(
 
 
 	# else
-		trip_to_la = Trip.create(
+		trip_from_la = Trip.create(
+				:bus_id 				=> bus.id,
+				:depart_city_id => la.id, 
+				:seats_left			=> 19,
+				:end_city_id 		=> sf.id, 
+				:depart_date		=> Date.parse("2016-04-19"),
+				:arrive_date		=> Date.parse("2016-04-20")
+		)
+	# end
+
+	Trip.create(
 				:bus_id 				=> bus.id,
 				:depart_city_id => la.id, 
 				:seats_left			=> 19,
@@ -98,8 +108,6 @@ la = City.create(
 				:depart_date		=> Date.parse("2016-04-21"),
 				:arrive_date		=> Date.parse("2016-04-22")
 		)
-	# end
-
 	Trip.create(
 				:bus_id 				=> bus.id,
 				:depart_city_id => la.id, 
@@ -116,14 +124,16 @@ la = City.create(
 				:depart_date		=> Date.parse("2016-04-26"),
 				:arrive_date		=> Date.parse("2016-04-27")
 		)
-	Trip.create(
+
+		Trip.create(
 				:bus_id 				=> bus.id,
 				:depart_city_id => la.id, 
 				:seats_left			=> 19,
 				:end_city_id 		=> sf.id, 
-				:depart_date		=> Date.parse("2016-04-29"),
-				:arrive_date		=> Date.parse("2016-04-30")
+				:depart_date		=> Date.parse("2016-04-28"),
+				:arrive_date		=> Date.parse("2016-04-29")
 		)
+
 	Trip.create(
 				:bus_id 				=> bus.id,
 				:depart_city_id => la.id, 
