@@ -8,7 +8,7 @@
 					Departure: <%= trip.depart_date %> @11pm
 				</h5>
 				<h5>
-					Arrival: <%= trip.arrive_date %> by 5am
+					Arrival: <%= trip.arrive_date %> by 6am
 				</h5>
 		</div>
 	<% end %>
@@ -20,11 +20,11 @@
 		<hr>
 	<% end %>
 <form action="/stripe/charge" method="post" class="stripe-payment-form">
- <input type="hidden" value="<%= passengers.length * 6500 %>" name="cost">
+ <input type="hidden" value="<%= passengers.length * trip_price_mutiplyer.to_i %>" name="cost">
 	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 	          data-key="<%= settings.publishable_key %>"
 	          data-description="<%= passengers.length %> Sleepbus Ticket(s)"
-	          data-amount= "<%= passengers.length * 6500 %>"
+	          data-amount= "<%= passengers.length * trip_price_mutiplyer.to_i %>"
 	          data-locale="auto"></script>
 	</form>
 </div>

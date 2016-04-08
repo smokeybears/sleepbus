@@ -1,6 +1,6 @@
 bus = Bus.create(
 		:name => "SF-LA",
-		:num_seats => 10
+		:num_seats => 19
 )
 
 passenger_ids = []
@@ -22,26 +22,116 @@ la = City.create(
 		:name => "Los Angleses, Ca",
 	)
 
-(18..30).each do |num|
-	if num % 2 == 0
+# (18..22).each do |num|
+	# if num % 2 == 0
 		trip_to_sf = Trip.create(
 			:bus_id 				=> bus.id,
-			:depart_city_id => la.id, 
-			:seats_left			=> (Random.rand(6)),
-			:end_city_id 		=> sf.id, 
-			:depart_date		=> Date.parse("2016-04-#{num}"),
-			:arrive_date		=> Date.parse("2016-04-#{num}")
+			:depart_city_id => sf.id, 
+			:seats_left			=> 19,
+			:end_city_id 		=> la.id, 
+			:depart_date		=> Date.parse("2016-04-18"),
+			:arrive_date		=> Date.parse("2016-04-19")
 		)
-	else
+		
+		 Trip.create(
+			:bus_id 				=> bus.id,
+			:depart_city_id => sf.id, 
+			:seats_left			=> 19,
+			:end_city_id 		=> la.id, 
+			:depart_date		=> Date.parse("2016-04-21"),
+			:arrive_date		=> Date.parse("2016-04-22")
+		)		
+
+		 Trip.create(
+			:bus_id 				=> bus.id,
+			:depart_city_id => sf.id, 
+			:seats_left			=> 19,
+			:end_city_id 		=> la.id, 
+			:depart_date		=> Date.parse("2016-04-23"),
+			:arrive_date		=> Date.parse("2016-04-24")
+		)
+
+		 Trip.create(
+		 	:bus_id 				=> bus.id,
+		 	:depart_city_id => sf.id, 
+		 	:seats_left			=> 19,
+		 	:end_city_id 		=> la.id, 
+		 	:depart_date		=> Date.parse("2016-04-25"),
+		 	:arrive_date		=> Date.parse("2016-04-26")
+		 )
+
+		 Trip.create(
+		 	:bus_id 				=> bus.id,
+		 	:depart_city_id => sf.id, 
+		 	:seats_left			=> 19,
+		 	:end_city_id 		=> la.id, 
+		 	:depart_date		=> Date.parse("2016-04-27"),
+		 	:arrive_date		=> Date.parse("2016-04-28")
+		 )
+
+		 Trip.create(
+		 	:bus_id 				=> bus.id,
+		 	:depart_city_id => sf.id, 
+		 	:seats_left			=> 19,
+		 	:end_city_id 		=> la.id, 
+		 	:depart_date		=> Date.parse("2016-04-30"),
+		 	:arrive_date		=> Date.parse("2016-05-01")
+		 )
+
+
+		 Trip.create(
+		 	:bus_id 				=> bus.id,
+		 	:depart_city_id => sf.id, 
+		 	:seats_left			=> 19,
+		 	:end_city_id 		=> la.id, 
+		 	:depart_date		=> Date.parse("2016-05-02"),
+		 	:arrive_date		=> Date.parse("2016-05-03")
+		 )
+
+
+	# else
 		trip_to_la = Trip.create(
 				:bus_id 				=> bus.id,
-				:depart_city_id => sf.id, 
-				:seats_left			=> (Random.rand(6)),
-				:end_city_id 		=> la.id, 
-				:depart_date		=> Date.parse("2016-04-#{num}"),
-				:arrive_date		=> Date.parse("2016-04-#{num}")
+				:depart_city_id => la.id, 
+				:seats_left			=> 19,
+				:end_city_id 		=> sf.id, 
+				:depart_date		=> Date.parse("2016-04-21"),
+				:arrive_date		=> Date.parse("2016-04-22")
 		)
-	end
+	# end
+
+	Trip.create(
+				:bus_id 				=> bus.id,
+				:depart_city_id => la.id, 
+				:seats_left			=> 19,
+				:end_city_id 		=> sf.id, 
+				:depart_date		=> Date.parse("2016-04-24"),
+				:arrive_date		=> Date.parse("2016-04-25")
+		)
+	Trip.create(
+				:bus_id 				=> bus.id,
+				:depart_city_id => la.id, 
+				:seats_left			=> 19,
+				:end_city_id 		=> sf.id, 
+				:depart_date		=> Date.parse("2016-04-26"),
+				:arrive_date		=> Date.parse("2016-04-27")
+		)
+	Trip.create(
+				:bus_id 				=> bus.id,
+				:depart_city_id => la.id, 
+				:seats_left			=> 19,
+				:end_city_id 		=> sf.id, 
+				:depart_date		=> Date.parse("2016-04-29"),
+				:arrive_date		=> Date.parse("2016-04-30")
+		)
+	Trip.create(
+				:bus_id 				=> bus.id,
+				:depart_city_id => la.id, 
+				:seats_left			=> 19,
+				:end_city_id 		=> sf.id, 
+				:depart_date		=> Date.parse("2016-05-01"),
+				:arrive_date		=> Date.parse("2016-04-02")
+		)
 end
 
 # passenger_ids.each do |passenger_id| # creates enough ticket for the trip where booking one user should work but booking two should fail

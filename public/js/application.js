@@ -68,7 +68,6 @@ var Model = {
 			method: "POST",
 			data: StripePaymentInfo
 		}).done(function(confirm_html){
-			debugger
 			$(".form-area").empty();
 			$(".stripe-checkout-success").css("display", "block");
 		})
@@ -114,8 +113,15 @@ var View = {
 		View.toggleDatePickerLoading()
 	},
 
-	updatePriceInSubmitText:  function(numPassengers){
-		var price = parseInt(numPassengers) * 65
+	updatePriceInSubmitText:  function(numPassengers, tripType){
+		var price = 1
+		if (tripType == "round"){
+			price = parseInt(numPassengers) * 130
+		debugger
+		}
+		else {
+			price = parseInt(numPassengers) * 65	
+		}
 		$(".trip-details").attr("value", "Book now for $" + price)
 	},
 
@@ -218,7 +224,8 @@ startListeners = function(){
 
 
 	$('.number_of_adults').change(function(event){
-		View.updatePriceInSubmitText($(this).val())
+		debugger
+		View.updatePriceInSubmitText($(this).val(), $(".trip-details").attr("data-trip-type"))
 		Model.getAvailableDatesForXAdults(
 			$(this).val(), 
 			$(".depart-city").attr("data-city-id"),
@@ -254,6 +261,7 @@ startListeners = function(){
 		$(".trip-details").attr("data-trip-type", "one-way");
 		$(".direction-selection-icon").removeClass("icon-loop");
 		$(".direction-selection-icon").addClass("icon-arrow-right");
+		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
 	});
 
 	$(document).on("click", "#roundtrip", function(event){
@@ -263,9 +271,10 @@ startListeners = function(){
 		$("#one-way").toggleClass("non-selected");
 		$("#one-way").toggleClass("selected");
 		$(".return-date-select").css("display", "block");
-		$(".trip-details").attr("data-trip-type", "one-way")
+		$(".trip-details").attr("data-trip-type", "round")
 		$(".direction-selection-icon").removeClass("icon-arrow-right");
 		$(".direction-selection-icon").addClass("icon-loop");
+		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
 	});
 
 	// $(document).on("click", ".mobile-book-trip", function(event){

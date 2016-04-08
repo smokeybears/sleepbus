@@ -9,7 +9,7 @@ get "/" do
 		},
 		{
 			"header" 			=> "Book Any <br> Ticket for $65",
-			"sub-header" 	=> "Whether you book 10 months <br> before or 10 minuets before the <br> price never changes",
+			"sub-header" 	=> "Whether you book 10 months <br> before or 10 minutes before the <br> price never changes",
 			"button" => "true",
 			"base_image_url"	=> "/images/PHONE@2x.png",
 			"srcset_image_ulrs" => "/images/PHONE@2x_cut.png 765w"
@@ -17,7 +17,7 @@ get "/" do
 
 		{
 			"header" 			=> "Arrive Rested <br> & Ready",
-			"sub-header" 	=> "Every passenger gets a full size <br> twin bed with 10 cubit feet of <br> overhead storage",
+			"sub-header" 	=> "Every passenger gets a full size <br> twin bed premium bedding and <br> 10 cubic feet of storage space.",
 			"button" => "true",
 			"base_image_url"		=> "/images/bus-interior-0.jpg",
 			"srcset_image_ulrs" => ""
@@ -33,10 +33,10 @@ get "/" do
 			"image_url" => "/svgs/OUTLET.svg",
 			"text" 			=> "Personal Power Outlets"
 		}, 
-		{
-			"image_url" => "/svgs/UTENSILS.svg",
-			"text" 			=> "Free Coffee for the Whole Trip"
-		}
+		# {
+		# 	"image_url" => "/svgs/UTENSILS.svg",
+		# 	"text" 			=> "Free Coffee for the Whole Trip"
+		# }
 	]
 
 	fhq_array = [
