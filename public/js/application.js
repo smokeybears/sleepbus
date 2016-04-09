@@ -305,6 +305,7 @@ startListeners = function(){
 	$(document).on("click", ".book-trip, .mobile-book-trip, .book-trip-no-disappear", function(event){
 		event.preventDefault();
 		if (isMobile.matches){ // if mobile we load a new page if desktop its ajaxed into a modal
+			debugger
 			window.location.href = "/begin-checkout"
 			$('body').css({
 				"background": "background: rgba(100, 100, 100, 0.7)",
