@@ -93,7 +93,7 @@ var View = {
 	updateAvailableDates: function(departTrips, returnTrips){
 		var departDates = departTrips.map(function (trip) {return trip.depart_date})
 		var returnDates = returnTrips.map(function (trip) {return trip.depart_date})// map to get the available dates for each direction of travel.
-		$("#depart-date").datepicker("destroy");
+		$("#depart-date").datepicker("refresh");
 		$('#depart-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
@@ -101,7 +101,7 @@ var View = {
 		    },
 		    minDate: 0
 		});
-		$("#return-date").datepicker("destroy");
+		$("#return-date").datepicker("refresh");
 		$('#return-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
@@ -201,7 +201,7 @@ var View = {
 
 
 startListeners = function(){
-	$(document).on("click", ".div-line-text", function(){ // $(document) selector has to be used for ajaxed in html
+	$('#switch').click(function(){
 		View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
 		Model.getAvailableDatesForXAdults(
 			$('.number_of_adults').val(), 
@@ -209,7 +209,17 @@ startListeners = function(){
 			$(".return-city").attr("data-city-id")
 		)
 		View.toggleDatePickerLoading()
+
 	});
+	// $(document).on("click", ".div-line-text", function(){ // $(document) selector has to be used for ajaxed in html
+	// 	View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
+	// 	Model.getAvailableDatesForXAdults(
+	// 		$('.number_of_adults').val(), 
+	// 		$(".depart-city").attr("data-city-id"),
+	// 		$(".return-city").attr("data-city-id")
+	// 	)
+	// 	View.toggleDatePickerLoading()
+	// });
 
 	$(".trip-details-form").submit(function(event){
 		var tripType = $(".trip-details").attr("data-trip-type");
