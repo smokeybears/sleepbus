@@ -758,6 +758,13 @@ Background Image Styling
 		top: 90%;
 	}*/
 }
+
+.checkout-holder {
+	background: rgba(100, 100, 100, 0.7);
+	background: -webkit-linear-gradient(#676767 0%, #383838 100%);
+	background: -o-linear-gradient(#676767 0%, #383838 100%);
+	background: linear-gradient(#676767 0%, #383838 100%);
+}
 /*************************************
 Footer
 *************************************/

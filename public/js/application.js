@@ -266,7 +266,7 @@ startListeners = function(){
 	});
 
 	$(".datepicker").on("click", function () {
-  	$(this).datepicker("show");
+  	$('.datepicker').css("position", "relative");
 	});
 // this stuff needs to be cleaned up a lot
 	$(document).on("click", "#one-way", function(event){
@@ -301,7 +301,11 @@ startListeners = function(){
 	// });
 	$(document).on("click", ".book-trip, .mobile-book-trip, .book-trip-no-disappear", function(event){
 		event.preventDefault();
-		$(".modal").css("display", "flex");
+		if (isMobile.matches){ // if mobile we load a new page if desktop its ajaxed into a modal
+			window.location.href = "/begin-checkout"
+		} else {
+			$(".modal").css("display", "flex");
+		}
 	});
 
 	$(".modal-close").click(function(event){
@@ -311,6 +315,7 @@ startListeners = function(){
 }
 
 $(document).ready(function() {
+	isMobile = window.matchMedia("only screen and (max-width: 760px)");
 	View.setUpLanding();
 	startListeners();
 });

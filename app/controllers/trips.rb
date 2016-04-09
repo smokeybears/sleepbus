@@ -1,3 +1,7 @@
+get "/begin-checkout" do
+	erb :trip_form
+end
+
 post "/trips/round" do
 	begin 
 		content_type :json
@@ -82,3 +86,4 @@ get "/trips/availability" do
 		return [depart_trips].to_json
 	end
 end
+
