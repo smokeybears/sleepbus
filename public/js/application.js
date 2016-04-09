@@ -297,10 +297,10 @@ startListeners = function(){
 		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
 	});
 
-	$(document).on("click", ".mobile-book-trip", function(event){
-		event.preventDefault();
-		$(".modal").css("display", "flex");
-	});
+	// $(document).on("click", ".mobile-book-trip", function(event){
+	// 	event.preventDefault();
+	// 	$(".modal").css("display", "flex");
+	// });
 
 	$(document).on("click", ".book-trip, .mobile-book-trip, .book-trip-no-disappear", function(event){
 		event.preventDefault();

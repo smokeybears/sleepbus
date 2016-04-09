@@ -1,11 +1,11 @@
 post "/stripe/charge" do
   #  this needs error handeling and rescuing https://stripe.com/docs/api?lang=ruby#errors
-  session['trip_ids'].each do |id|
+  # session['trip_ids'].each do |id|
     # make sure each trip still has enough seats
-    if Trip.find(id.to_i).seats_left - session[passengers].length < 0
-      return e
-    end
-  end
+  #   if Trip.find(id.to_i).seats_left - session[:passengers].length < 0
+  #     return e
+  #   end
+  # end
   begin
       customer = Stripe::Customer.create(
         :email => params["stripeEmail"],
