@@ -62,6 +62,8 @@ post "/stripe/charge" do
         ticket_ids << ticket.id
       end
     end
+  else
+    erb :checkout_err
   end
   # should add test here to see if charge went through
 

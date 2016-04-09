@@ -117,7 +117,7 @@ var View = {
 		var price = 1
 		if (tripType == "round"){
 			price = parseInt(numPassengers) * 130
-		// debugger
+		
 		}
 		else {
 			price = parseInt(numPassengers) * 65	
@@ -146,7 +146,8 @@ var View = {
 			1, 
 			$(".depart-city").data("city-id"), 
 			$(".return-city").data("city-id"));
-		if (!isMobile.matches){
+		// debugger
+		if (!(window.location.pathname == "/begin-checkout")){
 			var waypoint = new Waypoint({
   			element: document.getElementById('switch-follow-nav-waypoint'),
   			handler: View.toggleFollowNav
@@ -236,7 +237,7 @@ startListeners = function(){
 
 
 	$('.number_of_adults').change(function(event){
-		// debugger
+		
 		View.updatePriceInSubmitText($(this).val(), $(".trip-details").attr("data-trip-type"))
 		Model.getAvailableDatesForXAdults(
 			$(this).val(), 
@@ -305,7 +306,7 @@ startListeners = function(){
 	$(document).on("click", ".book-trip, .mobile-book-trip, .book-trip-no-disappear", function(event){
 		event.preventDefault();
 		if (isMobile.matches){ // if mobile we load a new page if desktop its ajaxed into a modal
-			debugger
+
 			window.location.href = "/begin-checkout"
 		} else {
 			$(".modal").css("display", "flex");
