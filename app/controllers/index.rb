@@ -21,6 +21,22 @@ get "/" do
 			"button" => "true",
 			"base_image_url"		=> "/images/bus-interior-0.jpg",
 			"srcset_image_ulrs" => ""
+		},
+		{
+			"base_image_url"		=> "/images/bus-interior-1.jpg",
+			"srcset_image_ulrs" => ""
+		},
+		{
+			"base_image_url"		=> "/images/bus-interior-2.jpg",
+			"srcset_image_ulrs" => ""
+		},
+		{
+			"base_image_url"		=> "/images/bus-interior-3.jpg",
+			"srcset_image_ulrs" => ""
+		},
+		{
+			"base_image_url"		=> "/images/bus-interior-4.jpg",
+			"srcset_image_ulrs" => ""
 		}
 	]
 
