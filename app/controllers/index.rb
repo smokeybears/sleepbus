@@ -1,7 +1,7 @@
 get "/" do
 	page_information = info_array = [
 		{
-			"header" 			=> "Wake up in <br> San Francisco",
+			"header" 			=> "Wake up in <br> Los Angeles",
 			"sub-header" 	=> "SleepBus has nightly non-stop <br> trips between Los Angeles, CA <br> and San Francisco, CA",
 			"button" 			=> "false",
 			"base_image_url"	=> "/images/sample-checkout.jpg",
@@ -20,6 +20,10 @@ get "/" do
 			"sub-header" 	=> "Every passenger gets a full size <br> twin bed premium bedding and <br> 10 cubic feet of storage space.",
 			"button" => "true",
 			"base_image_url"		=> "/images/bus-interior-0.jpg",
+			"srcset_image_ulrs" => ""
+		},
+		{
+			"base_image_url"		=> "/images/bus-interior-1.jpg",
 			"srcset_image_ulrs" => ""
 		}
 	]
