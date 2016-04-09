@@ -306,6 +306,12 @@ startListeners = function(){
 		event.preventDefault();
 		if (isMobile.matches){ // if mobile we load a new page if desktop its ajaxed into a modal
 			window.location.href = "/begin-checkout"
+			$('body').css({
+				"background": "background: rgba(100, 100, 100, 0.7)",
+				"background": "-webkit-linear-gradient(#676767 0%, #383838 100%)",
+				"background": "-o-linear-gradient(#676767 0%, #383838 100%)",
+				"background": "linear-gradient(#676767 0%, #383838 100%)",
+			})
 		} else {
 			$(".modal").css("display", "flex");
 		}
