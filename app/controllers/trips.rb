@@ -1,5 +1,5 @@
 get "/begin-checkout" do
-	erb :trip_form
+	erb :mobile_trip_form
 end
 
 post "/trips/round" do

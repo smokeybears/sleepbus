@@ -22,10 +22,6 @@ get "/" do
 			"base_image_url"		=> "/images/bus-interior-0.jpg",
 			"srcset_image_ulrs" => ""
 		},
-		{
-			"base_image_url"		=> "/images/bus-interior-1.jpg",
-			"srcset_image_ulrs" => ""
-		}
 	]
 
 	amenities_array = [
@@ -47,13 +43,13 @@ get "/" do
 		{
  
 			"question" => "What are the pick-up and drop-off locations?",
-			"answer" => "We're starting our services in the Mission District in San Francisco and in Santa Monica in Los Angeles. See below for specific locations. <br> <br> Los Angeles pick up and drop off: Santa Monica Parking, 1550 Pacific Coast Highway
-San Francisco pick up and drop off: Zeitgeist, 199 Valencia Street"
+			"answer" => "
+			San Francisco pick up and drop off: 4th and King Caltrain <br> Los Angeles pick up and drop off: Santa Monica Parking, 1550 Pacific Coast Highway.  "
 		},
 		{
 		
 			"question" => "What are the amenities on the SleepBus?",
-			"answer" => "A privacy screen for each bed, personal power outlets, WiFi, fresh sheets, coffee, tea, seating areas, and a restroom. We also will have a SleepBus attendant on each service to answer any of your questions and to serve as your point of contact during the ride."
+			"answer" => "A privacy screen for each bed, personal power outlets, reading light, WiFi, fresh luxury sheets, coffee, tea, seating areas, and a restroom. There is also a SleepBus attendant on each trip to answer any of your questions and to take care of you during the ride."
 		},
 		{
 		
@@ -69,12 +65,12 @@ San Francisco pick up and drop off: Zeitgeist, 199 Valencia Street"
 		{
 		
 			"question" => "How early should I arrive for check in and how long can I stay before I need to check out?",
-			"answer" => "You should aim to arrive at the pick up location 20 minutes before departure. Upon arrival, check-out time is 30 minutes after arrival. Departure time is 11pm sharp in both San Francisco and Los Angeles."
+			"answer" => "You should aim to arrive at the pick up location 10-20 minutes before departure. Departure time is 11pm sharp in both San Francisco and Los Angeles. After we get to LA/SF in the morning, you'll be able to keep sleeping until 10:30am :)"
 		},
 		{
 		
 			"question" => "How long is the bus ride?",
-			"answer" => "Given normal traffic and weather conditions, we expect the bus ride to last 6 hours.
+			"answer" => "Given normal traffic and weather conditions, the average bus ride lasts 6-6.5 hours. 
 "
 		},
 		{
