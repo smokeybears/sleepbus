@@ -479,6 +479,9 @@ Landing Main
  	.homepage-info-container {
 		text-align: center;
  	}
+	.homepage-info-container > * {
+		text-align: center;
+	}
 	
 	.amenitie {
 		margin: 20% auto;	
