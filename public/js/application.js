@@ -117,7 +117,7 @@ var View = {
 		var price = 1
 		if (tripType == "round"){
 			price = parseInt(numPassengers) * 130
-		debugger
+		// debugger
 		}
 		else {
 			price = parseInt(numPassengers) * 65	
@@ -224,7 +224,7 @@ startListeners = function(){
 
 
 	$('.number_of_adults').change(function(event){
-		debugger
+		// debugger
 		View.updatePriceInSubmitText($(this).val(), $(".trip-details").attr("data-trip-type"))
 		Model.getAvailableDatesForXAdults(
 			$(this).val(), 
