@@ -201,7 +201,7 @@ var View = {
 
 
 startListeners = function(){
-	$(document).on("click", ".div-line-text", function(){ // $(document) selector has to be used for ajaxed in html
+	$('#switch').click(function(){
 		View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
 		Model.getAvailableDatesForXAdults(
 			$('.number_of_adults').val(), 
@@ -209,7 +209,17 @@ startListeners = function(){
 			$(".return-city").attr("data-city-id")
 		)
 		View.toggleDatePickerLoading()
+
 	});
+	// $(document).on("click", ".div-line-text", function(){ // $(document) selector has to be used for ajaxed in html
+	// 	View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
+	// 	Model.getAvailableDatesForXAdults(
+	// 		$('.number_of_adults').val(), 
+	// 		$(".depart-city").attr("data-city-id"),
+	// 		$(".return-city").attr("data-city-id")
+	// 	)
+	// 	View.toggleDatePickerLoading()
+	// });
 
 	$(".trip-details-form").submit(function(event){
 		var tripType = $(".trip-details").attr("data-trip-type");
