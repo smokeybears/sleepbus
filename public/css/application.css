@@ -38,6 +38,10 @@ General
 .icon-close:before {
     content: "\e906";
 }
+
+.icon-close:hover {
+    cursor: pointer;
+}
 .icon-loop:before {
     content: "\e900";
 }

@@ -301,10 +301,10 @@ startListeners = function(){
 		$(".modal").css("display", "flex");
 	});
 
-	$(document).on("click", ".modal-close", function(event){
+	$(".modal-close").click(function(event){
 		event.preventDefault();
 		$(".modal").css("display", "none");
-	})
+	});
 }
 
 $(document).ready(function() {
