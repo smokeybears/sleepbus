@@ -235,6 +235,7 @@ Landing Header
 	right: 0;
 	bottom: auto;
 	width: 100%;
+	margin: 0;
 	display: none;
   align-items: center;
 	background: white;
@@ -243,6 +244,7 @@ Landing Header
 
 #appear-follow-nav > * {
 	padding: 1%;
+	max-width: 100%;
 }
 
 #appear-follow-nav button:active {
