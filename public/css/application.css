@@ -469,6 +469,10 @@ Landing Main
   	padding: 12% 0;
  		width: 100%;
   }
+	
+	.homepage-flex-box-container {
+		margin: 0;
+	}
 
 	.mobile-hr-display {
 		display: block;
