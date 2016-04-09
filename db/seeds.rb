@@ -19,7 +19,7 @@ sf = City.create(
 	)
 
 la = City.create(
-		:name => "Los Angleses, Ca",
+		:name => "Los Angeles, Ca",
 	)
 
 # (18..22).each do |num|
