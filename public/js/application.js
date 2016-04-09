@@ -146,10 +146,12 @@ var View = {
 			1, 
 			$(".depart-city").data("city-id"), 
 			$(".return-city").data("city-id"));
-		var waypoint = new Waypoint({
-  		element: document.getElementById('switch-follow-nav-waypoint'),
-  		handler: View.toggleFollowNav
-		})
+		if (!isMobile.matches){
+			var waypoint = new Waypoint({
+  			element: document.getElementById('switch-follow-nav-waypoint'),
+  			handler: View.toggleFollowNav
+			})
+		}
 	},
 
 	toggleToFromCities: function(){
@@ -295,10 +297,11 @@ startListeners = function(){
 		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
 	});
 
-	// $(document).on("click", ".mobile-book-trip", function(event){
-	// 	event.preventDefault();
-	// 	$(".modal").css("display", "flex");
-	// });
+	$(document).on("click", ".mobile-book-trip", function(event){
+		event.preventDefault();
+		$(".modal").css("display", "flex");
+	});
+
 	$(document).on("click", ".book-trip, .mobile-book-trip, .book-trip-no-disappear", function(event){
 		event.preventDefault();
 		if (isMobile.matches){ // if mobile we load a new page if desktop its ajaxed into a modal
@@ -315,7 +318,11 @@ startListeners = function(){
 }
 
 $(document).ready(function() {
+	paginit()
+});
+
+paginit = function(){
 	isMobile = window.matchMedia("only screen and (max-width: 760px)");
 	View.setUpLanding();
 	startListeners();
-});
+}

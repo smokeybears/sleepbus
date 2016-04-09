@@ -22,10 +22,6 @@ get "/" do
 			"base_image_url"		=> "/images/bus-interior-0.jpg",
 			"srcset_image_ulrs" => ""
 		},
-		{
-			"base_image_url"		=> "/images/bus-interior-1.jpg",
-			"srcset_image_ulrs" => ""
-		}
 	]
 
 	amenities_array = [
