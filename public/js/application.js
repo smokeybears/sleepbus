@@ -265,6 +265,9 @@ startListeners = function(){
 		$viewportMeta.attr('content', 'width=device-width,initial-scale=1,maximum-scale=' + (event.type == 'blur' ? 10 : 1));
 	});
 
+	$(".datepicker").on("click", function () {
+  	$(this).datepicker("show");
+	});
 // this stuff needs to be cleaned up a lot
 	$(document).on("click", "#one-way", function(event){
 		event.preventDefault();
