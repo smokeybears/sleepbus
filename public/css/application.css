@@ -472,6 +472,7 @@ Landing Main
 	
 	.homepage-flex-box-container {
 		margin: 0;
+		width: 100%;
 	}
 
 	.mobile-hr-display {
