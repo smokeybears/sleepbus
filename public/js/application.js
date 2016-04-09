@@ -110,7 +110,7 @@ var View = {
 		    minDate: 0
 
 		});
-		// View.toggleDatePickerLoading()
+		View.toggleDatePickerLoading()
 	},
 
 	updatePriceInSubmitText:  function(numPassengers, tripType){
