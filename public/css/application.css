@@ -235,6 +235,7 @@ Landing Header
 	right: 0;
 	bottom: auto;
 	width: 100%;
+	margin: 0;
 	display: none;
   align-items: center;
 	background: white;
@@ -243,6 +244,7 @@ Landing Header
 
 #appear-follow-nav > * {
 	padding: 1%;
+	max-width: 100%;
 }
 
 #appear-follow-nav button:active {
@@ -463,6 +465,16 @@ Landing Main
 }
 
 @media (max-width: 765px) {
+	.text-block {
+  	padding: 12% 0;
+ 		width: 100%;
+  }
+	
+	.homepage-flex-box-container {
+		margin: 0;
+		width: 100%;
+	}
+
 	.mobile-hr-display {
 		display: block;
 /*		width: 200%;
