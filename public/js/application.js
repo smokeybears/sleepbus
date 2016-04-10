@@ -93,7 +93,7 @@ var View = {
 	updateAvailableDates: function(departTrips, returnTrips){
 		var departDates = departTrips.map(function (trip) {return trip.depart_date})
 		var returnDates = returnTrips.map(function (trip) {return trip.depart_date})// map to get the available dates for each direction of travel.
-		$("#depart-date").datepicker("refresh");
+		$("#depart-date").datepicker("destroy");
 		$('#depart-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
@@ -101,7 +101,7 @@ var View = {
 		    },
 		    minDate: 0
 		});
-		$("#return-date").datepicker("refresh");
+		$("#return-date").datepicker("destroy");
 		$('#return-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
