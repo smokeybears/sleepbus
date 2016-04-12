@@ -94,7 +94,7 @@ var View = {
 	updateAvailableDates: function(departTrips, returnTrips){
 		var departDates = departTrips.map(function (trip) {return trip.depart_date})
 		var returnDates = returnTrips.map(function (trip) {return trip.depart_date})// map to get the available dates for each direction of travel.
-		$("#depart-date").datepicker("refresh");
+		$("#depart-date").datepicker("destroy");
 		$('#depart-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
@@ -102,7 +102,7 @@ var View = {
 		    },
 		    minDate: 0
 		});
-		$("#return-date").datepicker("refresh");
+		$("#return-date").datepicker("destroy");
 		$('#return-date').datepicker({
 		    beforeShowDay: function(date){
 		        var formatedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
@@ -328,4 +328,11 @@ paginit = function(){
 	isMobile = window.matchMedia("only screen and (max-width: 760px)");
 	View.setUpLanding();
 	startListeners();
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-75503822-1', 'auto');
+	ga('send', 'pageview');
 }
