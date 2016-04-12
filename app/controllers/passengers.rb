@@ -1,20 +1,19 @@
 post "/passengers" do 
 	begin
 		trip_price_mutiplyer = 4800
-
 		trip_ids = params["busID"].split(",")
 		passengers = []
 		params["passengersInfo"].each_key do |key|
 			passenger = Passenger.find_or_create_by({
 				first_name: params["passengersInfo"][key]["0"]["value"],
 				last_name: params["passengersInfo"][key]["1"]["value"],
-				email: params["passengersInfo"][key]["2"]["value"]
+				phone_number: params["passengersInfo"][key]["2"]["value"],
+				email: params["passengersInfo"][key]["3"]["value"]
 			})
 			if passenger.save
 				passengers << passenger
 			end
 		end
-		binding.pry
 		trips = [Trip.find(trip_ids[0].to_i)]
 		if trip_ids.length > 1 
 			trips.push(Trip.find(trip_ids[1].to_i))

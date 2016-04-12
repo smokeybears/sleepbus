@@ -17,6 +17,7 @@
 		<h5>Guest <%=  (index + 1) %></h5>
 		<h5><%= passenger.first_name + " " + passenger.last_name %></h5>
 			<h5><%= passenger.email %></h5>
+			<h5><%= passenger.phone_number %></h5>
 		<hr>
 	<% end %>
 <form action="/stripe/charge" method="post" class="stripe-payment-form">
