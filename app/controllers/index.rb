@@ -8,8 +8,8 @@ get "/" do
 			"srcset_image_ulrs" => ""
 		},
 		{
-			"header" 			=> "Book Any <br> Ticket for $48 <br>",
-			"sub-header" 	=> "", 
+			"header" 			=> "Book Any <br> Ticket for $48",
+			"sub-header" 	=> "<br>", 
 			# old text: Whether you book 10 months <br> before or 10 minutes before the <br> price never changes
 			"button" => "true",
 			"base_image_url"	=> "/images/PHONE@2x.png",
