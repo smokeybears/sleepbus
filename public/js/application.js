@@ -1,4 +1,4 @@
-ticketPriceCents = 4800;
+var ticketPriceCents = 4800;
 var Model = {
 	sendRoundTripDetails: function(tripData){
 		$.ajax({
