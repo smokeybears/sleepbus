@@ -1,3 +1,4 @@
+const ticketPriceCents = 4800;
 var Model = {
 	sendRoundTripDetails: function(tripData){
 		$.ajax({
@@ -116,11 +117,10 @@ var View = {
 	updatePriceInSubmitText:  function(numPassengers, tripType){
 		var price = 1
 		if (tripType == "round"){
-			price = parseInt(numPassengers) * 130
-		
+			price = parseInt(numPassengers) * ((ticketPriceCents * 2)/100);
 		}
 		else {
-			price = parseInt(numPassengers) * 65	
+			price = parseInt(numPassengers) * (ticketPriceCents/100)
 		}
 		$(".trip-details").attr("value", "Book now for $" + price)
 	},
@@ -147,6 +147,7 @@ var View = {
 			$(".depart-city").data("city-id"), 
 			$(".return-city").data("city-id"));
 		// debugger
+		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
 		if (!(window.location.pathname == "/begin-checkout")){
 			var waypoint = new Waypoint({
   			element: document.getElementById('switch-follow-nav-waypoint'),

@@ -9,7 +9,8 @@ get "/" do
 		},
 		{
 			"header" 			=> "Book Any <br> Ticket for $65",
-			"sub-header" 	=> "Whether you book 10 months <br> before or 10 minutes before the <br> price never changes",
+			"sub-header" 	=> "", 
+			# old text: Whether you book 10 months <br> before or 10 minutes before the <br> price never changes
 			"button" => "true",
 			"base_image_url"	=> "/images/PHONE@2x.png",
 			"srcset_image_ulrs" => "/images/PHONE@2x_cut.png 765w"
@@ -17,7 +18,8 @@ get "/" do
 
 		{
 			"header" 			=> "Arrive Rested <br> & Ready",
-			"sub-header" 	=> "Every passenger gets a full size <br> twin bed premium bedding and <br> 10 cubic feet of storage space.",
+			  
+			"sub-header" 	=> "Every passenger gets a private pod <br> with twin bed, premium bedding, <br> privacy curtain, outlet, and <br> reading light.",
 			"button" => "true",
 			"base_image_url"		=> "/images/bus-interior-0.jpg",
 			"srcset_image_ulrs" => ""

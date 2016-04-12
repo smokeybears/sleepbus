@@ -1,6 +1,7 @@
 post "/passengers" do 
 	begin
-		trip_price_mutiplyer = 6500
+		trip_price_mutiplyer = 4800
+
 		trip_ids = params["busID"].split(",")
 		passengers = []
 		params["passengersInfo"].each_key do |key|
@@ -13,10 +14,11 @@ post "/passengers" do
 				passengers << passenger
 			end
 		end
+		binding.pry
 		trips = [Trip.find(trip_ids[0].to_i)]
 		if trip_ids.length > 1 
 			trips.push(Trip.find(trip_ids[1].to_i))
-			trip_price_mutiplyer = 13000
+			trip_price_mutiplyer = (trip_price_mutiplyer * 2)
 		end
 		content_type :json
 		checkoutTemplate = erb :checkout_review, 
