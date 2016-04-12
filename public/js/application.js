@@ -71,7 +71,7 @@ var Model = {
 		}).done(function(confirm_html){
 			$(".form-area").empty();
 			$(".stripe-checkout-success").css("display", "block");
-		})
+		});
 	}
 
 };
@@ -111,18 +111,18 @@ var View = {
 		    minDate: 0
 
 		});
-		View.toggleDatePickerLoading()
+		View.toggleDatePickerLoading();
 	},
 
 	updatePriceInSubmitText:  function(numPassengers, tripType){
-		var price = 1
+		var price = 1;
 		if (tripType == "round"){
-			price = parseInt(numPassengers) * ((ticketPriceCents * 2)/100);
+			price = parseInt(numPassengers, 10) * ((ticketPriceCents * 2)/100);
 		}
 		else {
-			price = parseInt(numPassengers) * (ticketPriceCents/100)
+			price = parseInt(numPassengers, 10) * (ticketPriceCents/100);
 		}
-		$(".trip-details").attr("value", "Book now for $" + price)
+		$(".trip-details").attr("value", "Book now for $" + price);
 	},
 
 	toggleFollowNav: function(){
@@ -134,7 +134,7 @@ var View = {
 		} else {
 			appearfollowNav.slideDown();
 			// $("landing-logo").toggle();
-			appearfollowNav.css("display", "flex")
+			appearfollowNav.css("display", "flex");
 			followNavContianer.css("position", "fixed");
 		}
 	},
@@ -142,17 +142,14 @@ var View = {
 	setUpLanding: function(){
 		// $('#depart-date').datepicker();
 		// $('#return-date').datepicker();
-		Model.getAvailableDatesForXAdults(
-			1, 
-			$(".depart-city").data("city-id"), 
-			$(".return-city").data("city-id"));
+		Model.getAvailableDatesForXAdults(1, $(".depart-city").data("city-id"), $(".return-city").data("city-id"));
 		// debugger
-		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
-		if (!(window.location.pathname == "/begin-checkout")){
+		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"));
+		if (window.location.pathname != "/begin-checkout"){
 			var waypoint = new Waypoint({
-  			element: document.getElementById('switch-follow-nav-waypoint'),
-  			handler: View.toggleFollowNav
-			})
+				element: document.getElementById('switch-follow-nav-waypoint'),
+				handler: View.toggleFollowNav
+			});
 		}
 	},
 
@@ -164,22 +161,22 @@ var View = {
 		}
 		var orginal_depart_name = $(".depart-city").html();
 		$(".depart-city").html($(".return-city").html());
-		$(".return-city").html(orginal_depart_name)
+		$(".return-city").html(orginal_depart_name);
 
-		var orginal_depart_id = $(".depart-city").attr("data-city-id")
-		$(".depart-city").attr("data-city-id", $(".return-city").attr("data-city-id"))
-		$(".return-city").attr("data-city-id", orginal_depart_id)
+		var orginal_depart_id = $(".depart-city").attr("data-city-id");
+		$(".depart-city").attr("data-city-id", $(".return-city").attr("data-city-id"));
+		$(".return-city").attr("data-city-id", orginal_depart_id);
 	},
 
 	getTripDetailsFormInfo: function(callback, tripType){
-		var tripData = {}
+		var tripData = {};
 		tripData["depart-date"] = $("#depart-date").val();
 		tripData["return-date"] = $("#return-date").val();
 		tripData["number_of_adults"] = $(".number_of_adults").val();
 		tripData["departCityID"] = $(".depart-city").attr("data-city-id");
 		tripData["arriveCityID"] = $(".return-city").attr("data-city-id");
 		event.preventDefault();
-		callback(tripData)
+		callback(tripData);
 	},
 
 	toggleDatePickerLoading: function(){
@@ -188,49 +185,49 @@ var View = {
 					$(this).css("display", "block");
 				});
 				$(".datepicker-loading").each(function(){
-					$(this).css("display", "none")
+					$(this).css("display", "none");
 				});
 			} else {
 				$(".datepicker").each(function(){
 					$(this).css("display", "none");
 				});
 				$(".datepicker-loading").each(function(){
-					$(this).css("display", "-webkit-inline-box")
+					$(this).css("display", "-webkit-inline-box");
 				});
 			}
 	}
-}
+};
 
 
 
 
 startListeners = function(){
 	$('#switch').click(function(){
-		View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
+		View.toggleToFromCities(); // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
 		Model.getAvailableDatesForXAdults(
-			$('.number_of_adults').val(), 
+			$('.number_of_adults').val(),
 			$(".depart-city").attr("data-city-id"),
 			$(".return-city").attr("data-city-id")
-		)
-		View.toggleDatePickerLoading()
-
+		);
+		View.toggleDatePickerLoading();
 	});
+
 	// $(document).on("click", ".div-line-text", function(){ // $(document) selector has to be used for ajaxed in html
-	// 	View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
-	// 	Model.getAvailableDatesForXAdults(
-	// 		$('.number_of_adults').val(), 
-	// 		$(".depart-city").attr("data-city-id"),
-	// 		$(".return-city").attr("data-city-id")
-	// 	)
-	// 	View.toggleDatePickerLoading()
+		// View.toggleToFromCities() // switches the user seeable text for the cities also updates the data-city-id for both .depart-city and .return-city
+		// Model.getAvailableDatesForXAdults(
+			// $('.number_of_adults').val(), 
+			// $(".depart-city").attr("data-city-id"),
+			// $(".return-city").attr("data-city-id")
+		// )
+		// View.toggleDatePickerLoading()
 	// });
 
 	$(".trip-details-form").submit(function(event){
 		var tripType = $(".trip-details").attr("data-trip-type");
 		if (tripType == "round") {
-			View.getTripDetailsFormInfo(Model.sendRoundTripDetails, tripType) // gets the data from the form then sends it as a param to the callback
+			View.getTripDetailsFormInfo(Model.sendRoundTripDetails, tripType); // gets the data from the form then sends it as a param to the callback
 		} else {
-			View.getTripDetailsFormInfo(Model.sendOneWayTripDetails, tripType) // 
+			View.getTripDetailsFormInfo(Model.sendOneWayTripDetails, tripType); //
 		}
 	});
 
@@ -239,16 +236,16 @@ startListeners = function(){
 
 	$('.number_of_adults').change(function(event){
 		
-		View.updatePriceInSubmitText($(this).val(), $(".trip-details").attr("data-trip-type"))
+		View.updatePriceInSubmitText($(this).val(), $(".trip-details").attr("data-trip-type"));
 		Model.getAvailableDatesForXAdults(
-			$(this).val(), 
+			$(this).val(),
 			$(".depart-city").attr("data-city-id"),
 			$(".return-city").attr("data-city-id")
-		) // gets available dates for the next 2 months for however many passengers are selected then passes this to updateAvailableDates() which blocks out non-avaible dates for that many passengers
+		); // gets available dates for the next 2 months for however many passengers are selected then passes this to updateAvailableDates() which blocks out non-avaible dates for that many passengers
 		// Security Note: blocking out the available dates on the datepicker only works if the user has javascript enabled so we also have test in the model to make sure no trips are over booked. updateAvailableDates should be viewed a just a UI improvement and not a way of making sure trips aren't over booked
 
-		View.toggleDatePickerLoading() // We have to disable the date picker while the ajax call for availble dates is being made otherwise the user could select a date before the date picker is refreshed
-	})
+		View.toggleDatePickerLoading(); // We have to disable the date picker while the ajax call for availble dates is being made otherwise the user could select a date before the date picker is refreshed
+	});
 
 	$(document).on("click", ".send-user-info", function(event){
 		event.preventDefault();
@@ -261,7 +258,7 @@ startListeners = function(){
 
 	$(document).on("submit", ".stripe-payment-form", function(event){
 		event.preventDefault();
-		Model.sendStripPaymentDetails($(this).serializeArray()) // sends stripe form data to /stripe/charge
+		Model.sendStripPaymentDetails($(this).serializeArray()); // sends stripe form data to /stripe/charge
 	});
 	
 	var $viewportMeta = $('meta[name="viewport"]');
@@ -270,20 +267,20 @@ startListeners = function(){
 	});
 
 	$(".datepicker").on("click", function () {
-  	$('.datepicker').css("position", "relative");
+		$('.datepicker').css("position", "relative");
 	});
 // this stuff needs to be cleaned up a lot
 	$(document).on("click", "#one-way", function(event){
 		event.preventDefault();
 		$(this).toggleClass("non-selected");
 		$("#roundtrip").toggleClass("non-selected");
-		$(this).toggleClass("selected")
+		$(this).toggleClass("selected");
 		$("#roundtrip").toggleClass("selected");
 		$(".return-date-select").css("display", "none");
 		$(".trip-details").attr("data-trip-type", "one-way");
 		$(".direction-selection-icon").removeClass("icon-loop");
 		$(".direction-selection-icon").addClass("icon-arrow-right");
-		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
+		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"));
 	});
 
 	$(document).on("click", "#roundtrip", function(event){
@@ -293,10 +290,10 @@ startListeners = function(){
 		$("#one-way").toggleClass("non-selected");
 		$("#one-way").toggleClass("selected");
 		$(".return-date-select").css("display", "block");
-		$(".trip-details").attr("data-trip-type", "round")
+		$(".trip-details").attr("data-trip-type", "round");
 		$(".direction-selection-icon").removeClass("icon-arrow-right");
 		$(".direction-selection-icon").addClass("icon-loop");
-		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"))
+		View.updatePriceInSubmitText($('.number_of_adults').val(), $(".trip-details").attr("data-trip-type"));
 	});
 
 	// $(document).on("click", ".mobile-book-trip", function(event){
@@ -308,7 +305,7 @@ startListeners = function(){
 		event.preventDefault();
 		if (isMobile.matches){ // if mobile we load a new page if desktop its ajaxed into a modal
 
-			window.location.href = "/begin-checkout"
+			window.location.href = "/begin-checkout";
 		} else {
 			$(".modal").css("display", "flex");
 		}
@@ -318,21 +315,14 @@ startListeners = function(){
 		event.preventDefault();
 		$(".modal").css("display", "none");
 	});
-}
+};
 
 $(document).ready(function() {
-	paginit()
-});
-
-paginit = function(){
 	isMobile = window.matchMedia("only screen and (max-width: 760px)");
 	View.setUpLanding();
 	startListeners();
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+});
 
-	ga('create', 'UA-75503822-1', 'auto');
-	ga('send', 'pageview');
+paginit = function(){
+
 }
