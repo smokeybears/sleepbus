@@ -261,8 +261,9 @@ startListeners = function(){
 		Model.sendStripPaymentDetails($(this).serializeArray()); // sends stripe form data to /stripe/charge
 	});
 	
-	var $viewportMeta = $('meta[name="viewport"]');
-		$('input, select, textarea').bind('focus blur', function(event) {
+	
+	$('input, select, textarea').bind('focus blur', function(event) {
+		var $viewportMeta = $('meta[name="viewport"]');
 		$viewportMeta.attr('content', 'width=device-width,initial-scale=1,maximum-scale=' + (event.type == 'blur' ? 10 : 1));
 	});
 
@@ -318,11 +319,11 @@ startListeners = function(){
 };
 
 $(document).ready(function() {
-	isMobile = window.matchMedia("only screen and (max-width: 760px)");
-	View.setUpLanding();
-	startListeners();
+	paginit()
 });
 
 paginit = function(){
-
+	isMobile = window.matchMedia("only screen and (max-width: 760px)");
+	View.setUpLanding();
+	startListeners();
 }
