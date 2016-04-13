@@ -1,4 +1,6 @@
 post "/passengers" do 
+	#params are coming in like this {"0_passenger"=>{"0"=>{"name"=>"0_first_name", "value"=>"Shayanne"}, "1"=>{"name"=>"0_last_name", "value"=>"Wright"}, "2"=>{"name"=>"0_email", "value"=>"shayanright@gmail.com"}}}
+
 	begin
 		trip_price_mutiplyer = 4800
 		trip_ids = params["busID"].split(",")
@@ -35,5 +37,4 @@ post "/passengers" do
 	end
 end
 
-#{"0_passenger"=>{"0"=>{"name"=>"0_first_name", "value"=>"Shayanne"}, "1"=>{"name"=>"0_last_name", "value"=>"Wright"}, "2"=>{"name"=>"0_email", "value"=>"shayannewright@gmail.com"}}}
 

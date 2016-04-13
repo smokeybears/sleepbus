@@ -1,11 +1,5 @@
 post "/stripe/charge" do
-  #  this needs error handeling and rescuing https://stripe.com/docs/api?lang=ruby#errors
-  # session['trip_ids'].each do |id|
-    # make sure each trip still has enough seats
-  #   if Trip.find(id.to_i).seats_left - session[:passengers].length < 0
-  #     return e
-  #   end
-  # end
+
   begin
       customer = Stripe::Customer.create(
         :email => params["stripeEmail"],
@@ -38,13 +32,6 @@ post "/stripe/charge" do
       # return e
   end
 
-
-  #if !(env['sinatra.error'].message) # if is somewhat uneccessary because the route will have already returned if an error occured due to the rescues, but this works as a last catch all
-
-
-  # catch errrors
-  # charge object will not have paid attribute if payment did not succeed
-  # source: http://stackoverflow.com/questions/26985956/checking-for-a-successful-charge-using-stripe-for-rails
   ticket_ids = []
   if charge["paid"] == true
     session[:passengers].each do |passenger|
@@ -65,11 +52,6 @@ post "/stripe/charge" do
   else
     erb :checkout_err
   end
-  # should add test here to see if charge went through
 
-  # once javascript start preventDefault() uncomment next three lines
-  # confirmPage = erb :payment_success
-  # content_type :json
-  # return confirmPage.to_json
   erb :payment_success, :locals => {ticket_ids: ticket_ids}
 end
