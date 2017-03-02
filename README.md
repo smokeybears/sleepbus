@@ -1,5 +1,5 @@
 ### Sleepbus
-This is the sinatra backend as well as vinall javascript frontend for the sleepbus.co website. The site uses PostgreSQL coupled with active record for the database stack. erb templating is heavily used throughout the site with the data coming directly from the routes, depending on what the scope of the site becomes erb should be switched over to a frontend framework. 
+This is the sinatra backend as well as vinilla javascript frontend for the original sleepbus.co website. The site uses PostgreSQL coupled with Active Record for the database stack. ERB templating is heavily used throughout the site with the data coming directly from the routes, in the long term the site should be moved over to a frontend framework. There was a rush to get an MVP out so some of the code is messy as a result. 
 
 ### Quickstart
 1.  `bundle install`
